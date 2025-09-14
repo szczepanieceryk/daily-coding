@@ -1,6 +1,7 @@
-# Daily Coding Practice
 
-Everyday code experiments with code, components and snippets .
+# 🗓️ Daily Coding Practice
+
+My everyday practice with code.
 
 ## Tech stack
 
