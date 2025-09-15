@@ -16,8 +16,11 @@ const Button: React.FC<ButtonProps> = ({
   type = 'button',
   className = '',
 }) => {
-  const baseClasses = 'px-6 py-3 my-3 rounded-md text-white';
-  const styleClasses = { primary: 'bg-blue-500', secondary: 'bg-cyan-100 text-black' };
+  const baseClasses = 'px-6 py-3 my-3 rounded-md';
+  const styleClasses = {
+    primary: 'bg-blue-500 hover:bg-blue-800 text-white',
+    secondary: 'bg-cyan-100 hover:bg-cyan-300 text-black',
+  };
   const buttonClasses = `${baseClasses} ${styleClasses[style]} ${className}`;
 
   return (
