@@ -15,19 +15,24 @@ const App = () => {
           <span>
             <strong>Components</strong>
           </span>
-          <Button
-            content="Primary button"
-            style="primary"
-            onClick={handleClick}
-            disabled={false}
-            type="button"
-          />
+          {/* Primary button */}
+          <Button content="Primary button" style="primary" onClick={handleClick} type="button" />
+
+          {/* Secondary button */}
           <Button
             content="Secondary button"
             style="secondary"
             onClick={handleClick}
-            disabled={false}
             type="button"
+          />
+
+          {/* Disabled button */}
+          <Button
+            content="Disabled button"
+            style="primary"
+            onClick={handleClick}
+            type="button"
+            disabled={true}
           />
         </div>
       </div>
