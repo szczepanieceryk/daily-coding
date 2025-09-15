@@ -5,10 +5,10 @@ My everyday practice with code.
 
 ## Tech stack
 
-_React • TypeScript • Tailwind CSS • Vite • PLayWright_
+_React • TypeScript • Tailwind CSS • Vite • PLaywright_
 
 ## Categories
 
-- **React Components** - Reusable components
+### **React Components** :
 
-* **Button Component**
+* Button Component
