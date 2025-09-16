@@ -3,28 +3,33 @@ import Button from '../components/Button';
 import { useState } from 'react';
 const NewsletterForm: React.FC = () => {
   const [email, setEmail] = useState<string>('');
-  // const [errorMessage, setErrorMessage] = useState<string[]>([''])
+  const [errorMessage, setErrorMessage] = useState<string[]>(['']);
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const result = e.target.value;
     setEmail(result);
   };
 
-  // const validateEmailInput = () => {
-  //   const errors: string[] = ['']
-  //   if (!email) {
-  //     errors.push('Email canot be empty')
-  //     console.log('Email input not valdiated!');
-  //   } else {
-  //     console.log('Email input valdiated');
-  //   }
-  // };
+  const validateEmailInput = (email: string): string[] => {
+    const errors: string[] = [''];
+    if (!email) {
+      errors.push('Email canot be empty');
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.push('Please enter a valid email address');
+    }
+
+    return errors;
+  };
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
-    // const errors = validateEmailInput();
-    // setErrorMessage(errors)
+    const formValidator = validateEmailInput(email);
+    setErrorMessage(formValidator);
 
     console.log(`Newsletter Submitted for email ${email}`);
+
+    if (formValidator.length === 0) {
+      return;
+    }
   };
 
   return (
@@ -43,17 +48,19 @@ const NewsletterForm: React.FC = () => {
           required
           onChange={onInputChange}
         />
-        {/* <div>
-          <ul>
-            {errorMessage && (
+        <div>
+          {errorMessage && (
+            <ul>
               <li>
-                {errorMessage.map((error)=> (
-                  <small key={error}>{error}</small>
+                {errorMessage.map((error) => (
+                  <small key={error} className="text-red-400">
+                    {error}
+                  </small>
                 ))}
               </li>
-            )}
-          </ul>
-        </div> */}
+            </ul>
+          )}
+        </div>
         <Button
           content="subscribe"
           type="submit"

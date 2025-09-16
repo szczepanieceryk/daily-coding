@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './components/Button';
+import NewsletterForm from './layouts/NewsletterForm';
 
 const App = () => {
   const handleClick = () => console.log('Button clicked!');
@@ -34,6 +35,7 @@ const App = () => {
             type="button"
             disabled={true}
           />
+          <NewsletterForm />
         </div>
       </div>
     </div>
