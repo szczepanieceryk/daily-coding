@@ -41,7 +41,7 @@ const NewsletterForm: React.FC = () => {
           placeholder="Your email address"
           className="p-2 rounded-md border-gray-300"
           required
-          onInput={onInputChange}
+          onChange={onInputChange}
         />
         {/* <div>
           <ul>
