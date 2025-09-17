@@ -35,8 +35,8 @@ const App = () => {
             type="button"
             disabled={true}
           />
-          <NewsletterForm />
         </div>
+        <NewsletterForm />
       </div>
     </div>
   );
