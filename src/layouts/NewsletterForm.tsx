@@ -9,45 +9,46 @@ const NewsletterForm: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="p-[2em] w-80 mx-auto md:w-96 text-center text-white rounded-xl border-gray-300 bg-gray-700"
+      className="p-[2em] md:p-[3rem] w-80 md:w-[500px] mx-auto text-center text-white rounded-xl border-gray-300 bg-gray-700"
     >
       <span className="block text-2xl">Newsletter</span>
       <span className="block mt-2 mb-4">Stay up to date with our latest news and products.</span>
 
-      <div>
+      <div className="md:flex justify-between content-center items-center">
         <input
           type="email"
+          name="email-input"
           placeholder="Your email address"
-          className="p-2 rounded-md border-gray-300"
+          className="p-2 rounded-md md:rounded-tr-none md:rounded-br-none border-gray-300 w-full h-[48px]"
           required
           value={email}
           onChange={onInputChange}
           disabled={isSuibmitting}
         />
-        <div>
-          {errorMessage && (
-            <ul>
-              <li>
-                <small className="text-red-400">{errorMessage}</small>
-              </li>
-            </ul>
-          )}
 
-          {responseMessage && (
-            <ul>
-              <li>
-                <small>{responseMessage}</small>
-              </li>
-            </ul>
-          )}
-        </div>
         <Button
           content="subscribe"
           type="submit"
           style="primary"
           onClick={handleSubmit}
-          className="uppercase"
+          className="uppercase md:rounded-tl-none md:rounded-bl-none"
         />
+      </div>
+      <div>
+        {errorMessage && (
+          <ul>
+            <li>
+              <small className="text-red-400">{errorMessage}</small>
+            </li>
+          </ul>
+        )}
+        {responseMessage && (
+          <ul>
+            <li>
+              <small>{responseMessage}</small>
+            </li>
+          </ul>
+        )}
         <small className="block mt-2 italic text-gray-400">
           Your email is safe with us, we don`t spam.
         </small>
