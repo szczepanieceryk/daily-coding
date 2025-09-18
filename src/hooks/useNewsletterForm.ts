@@ -7,7 +7,7 @@ const useNewsletterForm = () => {
   const [responseMessage, setResponseMessage] = useState<string>('');
   const [isSuibmitting, setIsSuibmitting] = useState<boolean>(false);
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const result = e.target.value;
     setEmail(result);
     if (errorMessage) setErrorMessage('');
@@ -70,7 +70,7 @@ const useNewsletterForm = () => {
     errorMessage,
     responseMessage,
     isSuibmitting,
-    onInputChange,
+    handleChange,
     handleSubmit,
   };
 };

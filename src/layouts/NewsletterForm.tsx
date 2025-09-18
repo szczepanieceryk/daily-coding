@@ -3,7 +3,7 @@ import Button from '../components/Button';
 import useNewsletterForm from '../hooks/useNewsletterForm';
 
 const NewsletterForm: React.FC = () => {
-  const { email, errorMessage, responseMessage, isSuibmitting, onInputChange, handleSubmit } =
+  const { email, errorMessage, responseMessage, isSuibmitting, handleChange, handleSubmit } =
     useNewsletterForm();
 
   return (
@@ -22,7 +22,7 @@ const NewsletterForm: React.FC = () => {
           className="p-2 rounded-md md:rounded-tr-none md:rounded-br-none border-gray-300 w-full h-[48px]"
           required
           value={email}
-          onChange={onInputChange}
+          onChange={handleChange}
           disabled={isSuibmitting}
         />
 
