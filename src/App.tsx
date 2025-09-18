@@ -7,36 +7,47 @@ const App = () => {
 
   return (
     <div>
-      <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
-        <h1 className="text-xl font-bold text-center">🚀 Daily codeing project</h1>
-        <span className="block text-center">
-          Here I add small parts of code, everyday, from 10 to 15min{' '}
-        </span>
-        <div className="mt-[3em] flex flex-wrap justify-center max-w-[200px] mx-auto">
-          <span>
-            <strong>Components</strong>
+      <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-sm p-4 mb-4">
+        <div className="max-w-xl mx-auto">
+          <h1 className="text-xl font-bold text-center">🚀 Daily codeing project</h1>
+          <span className="block text-center">
+            Here I add small parts of code, everyday, from 10 to 15min{' '}
           </span>
-          {/* Primary button */}
-          <Button content="Primary button" style="primary" onClick={handleClick} type="button" />
 
-          {/* Secondary button */}
-          <Button
-            content="Secondary button"
-            style="secondary"
-            onClick={handleClick}
-            type="button"
-          />
+          <span className="block my-[2em]">
+            <strong>Components:</strong>
+          </span>
 
-          {/* Disabled button */}
-          <Button
-            content="Disabled button"
-            style="primary"
-            onClick={handleClick}
-            type="button"
-            disabled={true}
-          />
+          <span className="block text-center">
+            <strong>Buttons</strong>
+          </span>
+          <div className="my-[1em] flex flex-nowrap justify-between max-w-[550px] mx-auto">
+            {/* Primary button */}
+            <Button content="Primary button" style="primary" onClick={handleClick} type="button" />
+
+            {/* Secondary button */}
+            <Button
+              content="Secondary button"
+              style="secondary"
+              onClick={handleClick}
+              type="button"
+            />
+
+            {/* Disabled button */}
+            <Button
+              content="Disabled button"
+              style="primary"
+              onClick={handleClick}
+              type="button"
+              disabled={true}
+            />
+          </div>
+          <span className="block text-center">
+            <strong className="block mt-[3em] mb-[2em]">Form with validation</strong>
+          </span>
+          {/* Newsletter Form */}
+          <NewsletterForm />
         </div>
-        <NewsletterForm />
       </div>
     </div>
   );
