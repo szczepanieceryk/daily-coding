@@ -8,6 +8,29 @@ const AutoCompleateSearch = () => {
     setSearchTerm(e.target.value);
   };
 
+  const serachUsers = async (query) => {
+    // API call delay simulation
+    await new Promise((resolve) => setTimeout(resolve, 300));
+
+    const mockUsers = [
+      { id: 1, name: 'John React Developer', email: 'john@react.com' },
+      { id: 2, name: 'Jane JavaScript Expert', email: 'jane@js.com' },
+      { id: 3, name: 'Bob React Native Pro', email: 'bob@reactnative.com' },
+      { id: 4, name: 'Alice Vue Developer', email: 'alice@vue.com' },
+      { id: 5, name: 'Charlie Angular Master', email: 'charlie@angular.com' },
+      { id: 6, name: 'React Hooks Specialist', email: 'hooks@react.com' },
+    ];
+
+    return mockUsers.filter((user) => {
+      user.name
+        .toLocaleLowerCase()
+        .includes(
+          query.toLocaleLowerCase() ||
+            user.email.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
+        );
+    });
+  };
+
   return (
     <div>
       <div className="mt-[4em] text-center">
