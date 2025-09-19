@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './components/Button';
 import NewsletterForm from './layouts/NewsletterForm';
-// import AutoCompleateSearch from './layouts/AutoCompleteSearch';
+import AutoCompleateSearch from './layouts/AutoCompleteSearch';
 
 const App = () => {
   const handleClick = () => console.log('Button clicked!');
@@ -53,7 +53,7 @@ const App = () => {
           </span>
           {/* Newsletter Form */}
           <NewsletterForm />
-          {/* <AutoCompleateSearch /> */}
+          <AutoCompleateSearch />
         </div>
       </div>
     </div>
