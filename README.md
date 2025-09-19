@@ -10,5 +10,12 @@ _React • TypeScript • Tailwind CSS • Vite • Playwright_
 
 ### **React Components** :
 
+Reusable React components :
+
 - Button Component
+
+### **Layouts**
+
+A code snippets with its own functionality
+
 - Newsletter form with validation
