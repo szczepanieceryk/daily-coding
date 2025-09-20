@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { useDebounce } from '../hooks/useDebounce';
 
 const AutoCompleateSearch = () => {
   const [searachTerm, setSearchTerm] = useState<string>('');
+  const [apiCallCount, setApiCallCount] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [result, setResult] = useState([]);
+
+  const debouncedSearchTerm = useDebounce(searachTerm, 500);
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      setLoading(true);
+      setApiCallCount((count) => count + 1);
+      serachUsers(debouncedSearchTerm)
+        .then((users) => {
+          setResult(users);
+          setLoading(false);
+        })
+        .catch(() => {
+          setResult([]);
+          setLoading(false);
+        });
+    } else {
+      setResult([]);
+    }
+  }, [debouncedSearchTerm]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchTerm(e.target.value);
@@ -52,9 +76,9 @@ const AutoCompleateSearch = () => {
       <div className="p-4 rounded-md bg-gray-100">
         <div className="mb-2 flex justify-between">
           <span>Actual search: {searachTerm}</span>
-          <span>API calls:</span>
+          <span>API calls: {apiCallCount}</span>
         </div>
-        <div>Debounced search:</div>
+        <div>Debounced search: {debouncedSearchTerm}</div>
       </div>
     </div>
   );
