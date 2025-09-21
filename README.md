@@ -19,3 +19,4 @@ Reusable React components :
 A code snippets with its own functionality
 
 - Newsletter form with validation
+- Search Input with auto complete & optimisation of API calls number
