@@ -2,11 +2,17 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDebounce } from '../hooks/useDebounce';
 
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
+
 const AutoCompleateSearch = () => {
   const [searachTerm, setSearchTerm] = useState<string>('');
   const [apiCallCount, setApiCallCount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const [result, setResult] = useState([]);
+  const [results, setResults] = useState([]);
 
   const debouncedSearchTerm = useDebounce(searachTerm, 500);
 
@@ -16,15 +22,15 @@ const AutoCompleateSearch = () => {
       setApiCallCount((count) => count + 1);
       serachUsers(debouncedSearchTerm)
         .then((users) => {
-          setResult(users);
+          setResults(users);
           setLoading(false);
         })
         .catch(() => {
-          setResult([]);
+          setResults([]);
           setLoading(false);
         });
     } else {
-      setResult([]);
+      setResults([]);
     }
   }, [debouncedSearchTerm]);
 
@@ -79,6 +85,24 @@ const AutoCompleateSearch = () => {
           <span>API calls: {apiCallCount}</span>
         </div>
         <div>Debounced search: {debouncedSearchTerm}</div>
+      </div>
+
+      {loading && (
+        <div className="flex items-center justify-center py-8">
+          <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
+          <span className="ml-2 text-gray-600">Searching...</span>
+        </div>
+      )}
+      <div>
+        {results.map((user) => (
+          <div
+            key={user.id}
+            className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            <div className="font-medium text-gray-800">{user.name}</div>
+            <div className="text-sm text-gray-600">{user.email}</div>
+          </div>
+        ))}
       </div>
     </div>
   );
