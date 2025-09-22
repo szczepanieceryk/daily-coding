@@ -91,20 +91,22 @@ const AutoCompleateSearch = () => {
         </div>
       )}
 
-      <div className="mt-4">
-        <h3 className="font-semibold text-gray-800">
-          Found {results.length} user{results.length !== 1 ? 's' : ''}:
-        </h3>
-        {results?.map?.((user) => (
-          <div
-            key={user.id}
-            className="mb-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            <div className="font-medium text-gray-800">{user.name}</div>
-            <div className="text-sm text-gray-600">{user.email}</div>
-          </div>
-        )) || []}
-      </div>
+      {!loading && results.length > 0 && (
+        <div className="mt-4">
+          <h3 className="font-semibold text-gray-800">
+            Found {results.length} user{results.length !== 1 ? 's' : ''}:
+          </h3>
+          {results?.map?.((user) => (
+            <div
+              key={user.id}
+              className="mb-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              <div className="font-medium text-gray-800">{user.name}</div>
+              <div className="text-sm text-gray-600">{user.email}</div>
+            </div>
+          )) || []}
+        </div>
+      )}
 
       {!loading && debouncedSearchTerm && results.length === 0 && (
         <div className="text-center py-8 text-gray-500">
