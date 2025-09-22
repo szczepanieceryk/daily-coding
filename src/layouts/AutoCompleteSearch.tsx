@@ -2,17 +2,17 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDebounce } from '../hooks/useDebounce';
 
-type User = {
+interface User {
   id: number;
   name: string;
   email: string;
-};
+}
 
 const AutoCompleateSearch = () => {
   const [searachTerm, setSearchTerm] = useState<string>('');
   const [apiCallCount, setApiCallCount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Array<User>>([]);
 
   const debouncedSearchTerm = useDebounce(searachTerm, 500);
 
@@ -38,7 +38,7 @@ const AutoCompleateSearch = () => {
     setSearchTerm(e.target.value);
   };
 
-  const serachUsers = async (query) => {
+  const serachUsers = async (query: string): Promise<User[]> => {
     // API call delay simulation
     await new Promise((resolve) => setTimeout(resolve, 300));
 
@@ -51,14 +51,11 @@ const AutoCompleateSearch = () => {
       { id: 6, name: 'React Hooks Specialist', email: 'hooks@react.com' },
     ];
 
-    return mockUsers.filter((user) => {
-      user.name
-        .toLocaleLowerCase()
-        .includes(
-          query.toLocaleLowerCase() ||
-            user.email.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
-        );
-    });
+    return mockUsers.filter(
+      (user) =>
+        user.name.toLowerCase().includes(query.toLowerCase()) ||
+        user.email.toLowerCase().includes(query.toLowerCase()),
+    );
   };
 
   return (
@@ -93,17 +90,27 @@ const AutoCompleateSearch = () => {
           <span className="ml-2 text-gray-600">Searching...</span>
         </div>
       )}
-      <div>
-        {results.map((user) => (
+
+      <div className="mt-4">
+        <h3 className="font-semibold text-gray-800">
+          Found {results.length} user{results.length !== 1 ? 's' : ''}:
+        </h3>
+        {results?.map?.((user) => (
           <div
             key={user.id}
-            className="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+            className="mb-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
           >
             <div className="font-medium text-gray-800">{user.name}</div>
             <div className="text-sm text-gray-600">{user.email}</div>
           </div>
-        ))}
+        )) || []}
       </div>
+
+      {!loading && debouncedSearchTerm && results.length === 0 && (
+        <div className="text-center py-8 text-gray-500">
+          No users found for {debouncedSearchTerm}
+        </div>
+      )}
     </div>
   );
 };
