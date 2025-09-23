@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './components/Button';
 import NewsletterForm from './layouts/NewsletterForm';
 import AutoCompleateSearch from './layouts/AutoCompleteSearch';
+import ThemeSwitcher from './layouts/ThemeSwitcher';
 
 const App = () => {
   const handleClick = () => console.log('Button clicked!');
@@ -54,6 +55,7 @@ const App = () => {
           {/* Newsletter Form */}
           <NewsletterForm />
           <AutoCompleateSearch />
+          <ThemeSwitcher />
         </div>
       </div>
     </div>
