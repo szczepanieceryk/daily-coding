@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 
-const useLocalStorage = (key: string, defaultValue: string) => {
+type Theme = 'light' | 'dark';
+
+const useLocalStorage = (key: string, defaultValue: Theme) => {
   const [value, setValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(key);
