@@ -22,6 +22,6 @@ A code snippets with its own functionality
 - Search Input with auto complete & optimisation of API calls number
 - Theme Switcher
 
-### **Snipets**
+### **Snippets**
 
 - custom hook for using LocalStorage
