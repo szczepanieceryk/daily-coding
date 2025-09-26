@@ -25,3 +25,7 @@ A code snippets with its own functionality
 ### **Snippets**
 
 - custom hook for using LocalStorage
+
+## Project Demo
+
+[Live demo](https://szczepanieceryk.github.io/daily-coding/)
