@@ -6,8 +6,8 @@ const AutoCompleateSearch = () => {
     useAutoCompleate();
 
   return (
-    <div>
-      <div className="mt-[4em] text-center">
+    <div className="mt-[4em] p-4 rounded-lg border-2 border-gray-300">
+      <div className="text-center">
         <span className="block mb-3">
           <strong>Auto compleate searach</strong>
         </span>
@@ -23,7 +23,7 @@ const AutoCompleateSearch = () => {
         />
       </div>
 
-      <div className="p-4 rounded-md bg-gray-100">
+      <div className="p-4 rounded-md bg-gray-700 text-white">
         <div className="mb-2 flex justify-between">
           <span>Actual search: {searachTerm}</span>
           <span>API calls: {apiCallCount}</span>
