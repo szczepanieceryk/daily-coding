@@ -3,32 +3,18 @@ import Button from './components/Button';
 import NewsletterForm from './layouts/NewsletterForm';
 import AutoCompleateSearch from './layouts/AutoCompleteSearch';
 import useLocalStorage from './hooks/useLocalStorage';
-
+import ThemeSwitch from './components/ThemeSwitch';
+// import ThemeSwitcher from './layouts/ThemeSwitcher';
 const App = () => {
   const handleClick = () => console.log('Button clicked!');
 
   const [theme, setTheme] = useLocalStorage('theme', 'light');
-  const baseClasses = 'py-3 px-4';
-
   return (
     <div
       className={`max-w-8xl p-4 mb-4 mx-auto  rounded-lg shadow-sm ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
     >
       <div className="flex flex-wrap justify-end">
-        <div className="my-4 max-w-[300px] flex flex-wrap">
-          <button
-            onClick={() => setTheme('light')}
-            className={`${baseClasses} ${theme === 'light' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-black'} rounded-s-lg`}
-          >
-            ☀️ Light
-          </button>
-          <button
-            onClick={() => setTheme('dark')}
-            className={`${baseClasses}  ${theme === 'dark' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-black'} rounded-r-lg`}
-          >
-            🌙 Dark
-          </button>
-        </div>
+        <ThemeSwitch theme={theme} setTheme={setTheme} />
       </div>
 
       <div className="max-w-xl mx-auto">
