@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 
-type Theme = 'light' | 'dark';
-
-const useLocalStorage = (key: string, defaultValue: Theme) => {
-  const [value, setValue] = useState(() => {
+const useLocalStorage = (
+  key: string,
+  defaultValue: string,
+): [string, Dispatch<SetStateAction<string>>] => {
+  const [value, setValue] = useState<string>(() => {
     try {
       const item = window.localStorage.getItem(key);
       return item ? JSON.parse(item) : defaultValue;
