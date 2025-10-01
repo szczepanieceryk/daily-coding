@@ -1,6 +1,7 @@
 # 🗓️ Daily Coding Practice
 
 My everyday practice with code.
+Feel free to check out the [Live demo](https://szczepanieceryk.github.io/daily-coding/)
 
 ## Tech stack
 
@@ -25,7 +26,3 @@ A code snippets with its own functionality
 ### **Snippets**
 
 - custom hook for using LocalStorage
-
-## Project Demo
-
-[Live demo](https://szczepanieceryk.github.io/daily-coding/)
