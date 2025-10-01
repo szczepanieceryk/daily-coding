@@ -1,10 +1,5 @@
 import React from 'react';
-import { Theme } from '../types/types';
-
-interface ThemeProps {
-  theme: Theme | string;
-  setTheme: (value: Theme) => void;
-}
+import { ThemeProps } from '../types/types';
 
 const ThemeSwitch: React.FC<ThemeProps> = ({ theme, setTheme }) => {
   const baseClasses = 'py-3 px-4';
