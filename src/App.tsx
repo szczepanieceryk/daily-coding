@@ -4,7 +4,7 @@ import NewsletterForm from './layouts/NewsletterForm';
 import AutoCompleateSearch from './layouts/AutoCompleteSearch';
 import useLocalStorage from './hooks/useLocalStorage';
 import ThemeSwitch from './components/ThemeSwitch';
-// import ThemeSwitcher from './layouts/ThemeSwitcher';
+import ThemeSwitcher from './layouts/ThemeSwitcher';
 const App = () => {
   const handleClick = () => console.log('Button clicked!');
 
@@ -62,7 +62,7 @@ const App = () => {
         {/* Newsletter Form */}
         <NewsletterForm />
         <AutoCompleateSearch />
-        {/* <ThemeSwitcher /> */}
+        <ThemeSwitcher theme={theme} setTheme={setTheme} />
       </div>
     </div>
   );

@@ -1,35 +1,20 @@
 import React from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
+import ThemeSwitch from '../components/ThemeSwitch';
+import { ThemeProps } from '../types/types';
+const ThemeSwitcher: React.FC<ThemeProps> = ({ theme, setTheme }) => {
+  // const [theme, setTheme] = useLocalStorage('theme', 'light');
 
-const ThemeSwitcher: React.FC = () => {
-  const [theme, setTheme] = useLocalStorage('theme', 'light');
-
-  const baseClasses = 'rounded-md py-3 px-4';
+  // const baseClasses = 'rounded-md py-3 px-4';
 
   return (
-    <div className="my-[4rem]">
+    <div
+      className={`my-[4rem] p-4 rounded-lg border-2 border-gray-200 ${theme === 'dark' ? 'bg-gray-900 text-white border-gray-100' : 'bg-white text-gray-900'}`}
+    >
       <span className="mb-2 block font-medium text-center">
         <strong>Theme Switcher</strong>
       </span>
-      <div
-        className={`p-4 rounded-md border-2 border-gray-100 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
-      >
-        <div className="my-4 max-w-[200px] flex flex-wrap justify-between">
-          <button
-            onClick={() => setTheme('light')}
-            className={`${baseClasses} ${theme === 'light' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-black'}`}
-          >
-            ☀️ Light
-          </button>
-          <button
-            onClick={() => setTheme('dark')}
-            className={`${baseClasses}  ${theme === 'dark' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-black'}`}
-          >
-            🌙 Dark
-          </button>
-        </div>
-        <span>Current Theme: {theme}</span>
-      </div>
+      <ThemeSwitch theme={theme} setTheme={setTheme} />
+      <span>Current Theme: {theme}</span>
     </div>
   );
 };
