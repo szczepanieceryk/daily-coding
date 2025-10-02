@@ -22,6 +22,7 @@ A code snippets with its own functionality
 - Newsletter form with validation
 - Search Input with auto complete & optimisation of API calls number
 - Theme Switcher
+- Joke Generator using [API](https://icanhazdadjoke.com/api)
 
 ### **Snippets**
 
