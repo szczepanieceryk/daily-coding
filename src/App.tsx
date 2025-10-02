@@ -5,6 +5,7 @@ import AutoCompleateSearch from './layouts/AutoCompleteSearch';
 import useLocalStorage from './hooks/useLocalStorage';
 import ThemeSwitch from './components/ThemeSwitch';
 import ThemeSwitcher from './layouts/ThemeSwitcher';
+import JokeGenerator from './layouts/JokeGenerator';
 const App = () => {
   const handleClick = () => console.log('Button clicked!');
 
@@ -63,6 +64,7 @@ const App = () => {
         <NewsletterForm />
         <AutoCompleateSearch />
         <ThemeSwitcher theme={theme} setTheme={setTheme} />
+        <JokeGenerator />
       </div>
     </div>
   );
