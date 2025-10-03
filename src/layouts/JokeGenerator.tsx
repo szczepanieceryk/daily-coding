@@ -8,7 +8,8 @@ interface FormResponse {
 }
 
 const JokeGenerator = () => {
-  const [generatedJoke, setGeneratedJoke] = useState<string>('');
+  const [generatedJoke, setGeneratedJoke] = useState<string>('Are you ready for some dad jokes ?');
+
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
 
@@ -24,6 +25,7 @@ const JokeGenerator = () => {
       }
 
       const data: FormResponse = await response.json();
+
       setGeneratedJoke(data.joke);
     } catch (error) {
       console.log(`Error: ${error}`);
@@ -31,13 +33,13 @@ const JokeGenerator = () => {
     }
   };
   return (
-    <div className="p-4 rounded-lg border-2 border-gray-200 text-center">
+    <div className="p-2 md:p-4 rounded-lg border-2 border-gray-200 text-center">
       <form onSubmit={handleSubmit}>
         <span className="block">
           <strong>Joke generator</strong>
         </span>
 
-        <div className="my-2 h-24 rounded-lg flex items-center justify-center bg-gray-700 text-white">
+        <div className="my-2 p-2 h-24 rounded-lg flex items-center justify-center bg-gray-700 text-white">
           <span className="block my-4">
             {generatedJoke ? generatedJoke : 'Are you ready for some dad jokes ?'}
           </span>
