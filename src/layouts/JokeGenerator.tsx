@@ -37,7 +37,11 @@ const JokeGenerator = () => {
           <strong>Joke generator</strong>
         </span>
 
-        {generatedJoke && <span className="block my-4">{generatedJoke}</span>}
+        <div className="my-2 h-24 rounded-lg flex items-center justify-center bg-gray-700 text-white">
+          <span className="block my-4">
+            {generatedJoke ? generatedJoke : 'Are you ready for some dad jokes ?'}
+          </span>
+        </div>
 
         <Button
           content={`${generatedJoke ? 'Another one' : 'Tell me a joke'}`}
