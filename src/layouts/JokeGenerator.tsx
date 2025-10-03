@@ -9,10 +9,11 @@ interface FormResponse {
 
 const JokeGenerator = () => {
   const [generatedJoke, setGeneratedJoke] = useState<string>('Are you ready for some dad jokes ?');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
-
+    setErrorMessage('');
     try {
       const response: Response = await fetch('https://icanhazdadjoke.com/', {
         headers: {
@@ -21,6 +22,7 @@ const JokeGenerator = () => {
       });
 
       if (!response.ok) {
+        setErrorMessage('No jokes for now :( ... please try later ');
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
@@ -28,6 +30,7 @@ const JokeGenerator = () => {
 
       setGeneratedJoke(data.joke);
     } catch (error) {
+      setErrorMessage('No jokes for now :( ... please try later');
       console.log(`Error: ${error}`);
       console.error(`Error during joke generation: ${error}`);
     }
@@ -40,10 +43,10 @@ const JokeGenerator = () => {
         </span>
 
         <div className="my-2 p-2 h-24 rounded-lg flex items-center justify-center bg-gray-700 text-white">
-          <span className="block my-4">
-            {generatedJoke ? generatedJoke : 'Are you ready for some dad jokes ?'}
-          </span>
+          <span className="block my-4">{generatedJoke && <span>{generatedJoke}</span>}</span>
         </div>
+
+        {errorMessage && <small className="block text-red-600">{errorMessage}</small>}
 
         <Button
           content={`${generatedJoke ? 'Another one' : 'Tell me a joke'}`}
