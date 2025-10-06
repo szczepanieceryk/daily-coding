@@ -31,7 +31,7 @@ const App = () => {
         <span className="block text-center">
           <strong>Buttons</strong>
         </span>
-        <div className="my-[1em] flex flex-nowrap justify-between max-w-[550px] mx-auto">
+        <div className="my-[1em] flex flex-wrap justify-center md:justify-between max-w-[250px] md:max-w-[550px] mx-auto">
           {/* Primary button */}
           <Button content="Primary button" style="primary" onClick={handleClick} type="button" />
 
