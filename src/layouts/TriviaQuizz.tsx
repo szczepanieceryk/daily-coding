@@ -47,12 +47,17 @@ const TriviaQuizz = () => {
           </span>
         )}
 
-        {question && <span className="block my-4">{question}</span>}
+        {question && (
+          <span className="block my-4 p-6 rounded-md bg-gray-700 text-white">{question}</span>
+        )}
 
         {options && (
-          <fieldset className="flex flex-wrap justify-between max-w-xs mx-auto my-6">
+          <fieldset className="flex flex-wrap justify-center md:justify-between max-w-md mx-auto my-6">
             {options?.map?.((answer, i) => (
-              <div key={`${i}`}>
+              <div
+                key={`${i}`}
+                className="p-2 my-2 rounded-lg border-2 border-gray-200 min-w-[200px]"
+              >
                 <input type="radio" id={`${i}`} value={answer} />
                 <label htmlFor={`${i}`}>{answer}</label>
               </div>
