@@ -5,9 +5,11 @@ const TriviaQuizz = () => {
   const [question, setQuestion] = useState<string>('');
   const [category, setCategory] = useState<string>('');
   const [options, setOptions] = useState(['']);
+  const [selectedAnswer, setSelectedAnswer] = useState<string>('');
 
-  const handleChange = (e: React.ChangeEvent) => {
-    console.log('event ', e.target);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log('event ', e.target.value);
+    setSelectedAnswer(e.target.value);
   };
 
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
@@ -31,7 +33,7 @@ const TriviaQuizz = () => {
       setQuestion(question);
       setCategory(category);
       setOptions(options);
-
+      setSelectedAnswer('');
       console.log('data ', data);
     } catch (error) {
       console.error(`Error: ${error}`);
@@ -55,16 +57,24 @@ const TriviaQuizz = () => {
           <span className="block my-4 p-6 rounded-md bg-gray-700 text-white">{question}</span>
         )}
 
-        {options && (
-          <fieldset className="flex flex-wrap justify-center md:justify-between max-w-md mx-auto my-6">
+        {options.length > 0 && (
+          <fieldset className="flex flex-wrap justify-center md:justify-between max-w-lg mx-auto my-6">
             {options?.map?.((answer, i) => (
-              <div
+              <label
+                htmlFor={`option-${i}`}
                 key={`${i}`}
                 className="p-2 my-2 rounded-lg border-2 border-gray-200 hover:border-gray-100 min-w-[200px] hover:bg-gray-300 cursor-pointer"
               >
-                <input onChange={handleChange} type="radio" id={`${i}`} value={answer} />
-                <label htmlFor={`${i}`}>{answer}</label>
-              </div>
+                <input
+                  type="radio"
+                  id={`option-${i}`}
+                  value={answer}
+                  name="quiz-option"
+                  checked={selectedAnswer === answer}
+                  onChange={handleChange}
+                />
+                {answer}
+              </label>
             ))}
           </fieldset>
         )}
