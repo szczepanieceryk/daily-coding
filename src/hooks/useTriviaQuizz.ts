@@ -39,7 +39,7 @@ const useTriviaQuizz = () => {
 
       const data: TriviaReponse = await res.json();
       const { category, question, correct_answer, incorrect_answers } = data.results[0];
-      const options = [...incorrect_answers, correct_answer];
+      const options = [...incorrect_answers, correct_answer].sort(() => Math.random() - 0.5);
 
       setQuestion(question);
       setCategory(category);
