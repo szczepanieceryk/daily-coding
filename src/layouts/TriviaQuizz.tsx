@@ -6,6 +6,10 @@ const TriviaQuizz = () => {
   const [category, setCategory] = useState<string>('');
   const [options, setOptions] = useState(['']);
 
+  const handleChange = (e: React.ChangeEvent) => {
+    console.log('event ', e.target);
+  };
+
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     try {
@@ -56,9 +60,9 @@ const TriviaQuizz = () => {
             {options?.map?.((answer, i) => (
               <div
                 key={`${i}`}
-                className="p-2 my-2 rounded-lg border-2 border-gray-200 min-w-[200px]"
+                className="p-2 my-2 rounded-lg border-2 border-gray-200 hover:border-gray-100 min-w-[200px] hover:bg-gray-300 cursor-pointer"
               >
-                <input type="radio" id={`${i}`} value={answer} />
+                <input onChange={handleChange} type="radio" id={`${i}`} value={answer} />
                 <label htmlFor={`${i}`}>{answer}</label>
               </div>
             ))}
