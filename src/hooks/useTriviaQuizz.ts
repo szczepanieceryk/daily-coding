@@ -1,4 +1,19 @@
 import { useState } from 'react';
+
+interface TriviaQuestion {
+  category: string;
+  type: 'multiple' | 'boolean';
+  difficulty: 'easy' | 'medium' | 'hard';
+  question: string;
+  correct_answer: string;
+  incorrect_answers: string[];
+}
+
+interface TriviaReponse {
+  response_code: number;
+  results: TriviaQuestion[];
+}
+
 const useTriviaQuizz = () => {
   const [question, setQuestion] = useState<string>('');
   const [category, setCategory] = useState<string>('');
@@ -6,7 +21,6 @@ const useTriviaQuizz = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log('event ', e.target.value);
     setSelectedAnswer(e.target.value);
   };
 
@@ -23,8 +37,7 @@ const useTriviaQuizz = () => {
         throw new Error(`HTTP Response Error ${res.status}`);
       }
 
-      const data = await res.json();
-      console.log('data ', data);
+      const data: TriviaReponse = await res.json();
       const { category, question, correct_answer, incorrect_answers } = data.results[0];
       const options = [...incorrect_answers, correct_answer];
 
@@ -32,7 +45,6 @@ const useTriviaQuizz = () => {
       setCategory(category);
       setOptions(options);
       setSelectedAnswer('');
-      console.log('data ', data);
     } catch (error) {
       console.error(`Error: ${error}`);
     }
