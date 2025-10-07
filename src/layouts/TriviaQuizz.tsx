@@ -50,13 +50,14 @@ const TriviaQuizz = () => {
         {question && <span className="block my-4">{question}</span>}
 
         {options && (
-          <select name="quizz-answer" id="" className="block">
-            {options?.map?.((option) => (
-              <option key={option} value="option">
-                {option}
-              </option>
+          <fieldset className="flex flex-wrap justify-between max-w-xs mx-auto my-6">
+            {options?.map?.((answer, i) => (
+              <div key={`${i}`}>
+                <input type="radio" id={`${i}`} value={answer} />
+                <label htmlFor={`${i}`}>{answer}</label>
+              </div>
             ))}
-          </select>
+          </fieldset>
         )}
         <Button style="primary" type="submit" content="Show Question" onClick={handleSubmit} />
       </form>
