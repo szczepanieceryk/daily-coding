@@ -39,23 +39,25 @@ const TriviaQuizz = () => {
       <span className="block">
         <strong>Trivia Quizz</strong>
       </span>
-      <span className="block mb-4">
-        <strong>Category</strong>: {category ? category : ''}
-      </span>
-
-      {question && <span className="block my-4">{question}</span>}
-
-      {options && (
-        <select name="quizz-answer" id="">
-          {options?.map?.((option) => (
-            <option key={option} value="option">
-              {option}
-            </option>
-          ))}
-        </select>
-      )}
 
       <form onSubmit={handleSubmit}>
+        {category && (
+          <span className="block mb-4">
+            <strong>Category</strong>: {category}
+          </span>
+        )}
+
+        {question && <span className="block my-4">{question}</span>}
+
+        {options && (
+          <select name="quizz-answer" id="" className="block">
+            {options?.map?.((option) => (
+              <option key={option} value="option">
+                {option}
+              </option>
+            ))}
+          </select>
+        )}
         <Button style="primary" type="submit" content="Show Question" onClick={handleSubmit} />
       </form>
     </div>
