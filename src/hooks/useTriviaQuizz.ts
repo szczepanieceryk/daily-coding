@@ -60,6 +60,7 @@ const useTriviaQuizz = () => {
       setCategory(category);
       setOptions(options);
       setSelectedAnswer('');
+      setResponseMessage('');
     } catch (error) {
       console.error(`Error: ${error}`);
     }
