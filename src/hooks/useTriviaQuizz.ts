@@ -27,7 +27,7 @@ const useTriviaQuizz = () => {
 
     if (isAnswerCorrect()) {
       console.log('correct answer !!');
-      setResponseMessage('Good answer!');
+      setResponseMessage('Good answer! 🎉');
     } else {
       console.log('Uncorrect Answer :(');
       setResponseMessage('Wrong answer :( . Try again');

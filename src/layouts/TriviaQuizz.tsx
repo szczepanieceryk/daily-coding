@@ -57,7 +57,7 @@ const TriviaQuizz = () => {
           </fieldset>
         )}
 
-        {responseMessage && <span className="block">{responseMessage}</span>}
+        <span className="block h-[20px] font-medium">{responseMessage ? responseMessage : ''}</span>
         <Button style="primary" type="submit" content="Show Question" onClick={handleSubmit} />
       </form>
     </div>
