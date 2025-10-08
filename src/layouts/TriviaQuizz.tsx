@@ -3,8 +3,15 @@ import Button from '../components/Button';
 import useTriviaQuizz from '../hooks/useTriviaQuizz';
 
 const TriviaQuizz = () => {
-  const { question, category, options, selectedAnswer, handleChange, handleSubmit } =
-    useTriviaQuizz();
+  const {
+    question,
+    category,
+    options,
+    selectedAnswer,
+    responseMessage,
+    handleChange,
+    handleSubmit,
+  } = useTriviaQuizz();
 
   return (
     <div className="p-2 md:p-4 my-[4rem] rounded-lg border-2 border-gray-200 text-center">
@@ -44,6 +51,8 @@ const TriviaQuizz = () => {
             ))}
           </fieldset>
         )}
+
+        {responseMessage && <span className="block">{responseMessage}</span>}
         <Button style="primary" type="submit" content="Show Question" onClick={handleSubmit} />
       </form>
     </div>

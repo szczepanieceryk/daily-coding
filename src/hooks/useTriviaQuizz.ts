@@ -17,12 +17,24 @@ interface TriviaReponse {
 const useTriviaQuizz = () => {
   const [question, setQuestion] = useState<string>('');
   const [category, setCategory] = useState<string>('');
-  const [options, setOptions] = useState(['']);
+  const [options, setOptions] = useState<string[]>(['']);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
+  const [correctAnswer, setCorrectAnswer] = useState<string>('');
+  const [responseMessage, setResponseMessage] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedAnswer(e.target.value);
+
+    if (isAnswerCorrect()) {
+      console.log('correct answer !!');
+      setResponseMessage('Good answer!');
+    } else {
+      console.log('Uncorrect Answer :(');
+      setResponseMessage('Wrong answer :( . Try again');
+    }
   };
+
+  const isAnswerCorrect = (): boolean => selectedAnswer === correctAnswer;
 
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
@@ -39,6 +51,7 @@ const useTriviaQuizz = () => {
 
       const data: TriviaReponse = await res.json();
       const { category, question, correct_answer, incorrect_answers } = data.results[0];
+      setCorrectAnswer(correctAnswer);
       const options: string[] = [...incorrect_answers, correct_answer].sort(
         () => Math.random() - 0.5,
       );
@@ -52,7 +65,15 @@ const useTriviaQuizz = () => {
     }
   };
 
-  return { question, category, options, selectedAnswer, handleChange, handleSubmit };
+  return {
+    question,
+    category,
+    options,
+    selectedAnswer,
+    responseMessage,
+    handleChange,
+    handleSubmit,
+  };
 };
 
 export default useTriviaQuizz;
