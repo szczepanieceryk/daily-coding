@@ -30,7 +30,7 @@ const TriviaQuizz = () => {
           <span className="block my-4 p-6 rounded-md bg-gray-700 text-white">{question}</span>
         )}
 
-        {options.length > 0 && (
+        {question && options.length > 0 && (
           <fieldset className="flex flex-wrap justify-center md:justify-between max-w-lg mx-auto my-6">
             {options?.map?.((answer, i) => (
               <label
@@ -53,7 +53,7 @@ const TriviaQuizz = () => {
                 />
                 {answer}
               </label>
-            ))}
+            )) || []}
           </fieldset>
         )}
 
