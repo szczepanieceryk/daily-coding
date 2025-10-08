@@ -17,12 +17,13 @@ Reusable React components :
 
 ### **Layouts**
 
-A code snippets with its own functionality
+A code snippets with it's own functionality
 
 - Newsletter form with validation
 - Search Input with auto complete & optimisation of API calls number
 - Theme Switcher
 - Joke Generator using [API](https://icanhazdadjoke.com/api)
+- Trivia Quizz using [API](https://opentdb.com/api_config.php)
 
 ### **Snippets**
 
