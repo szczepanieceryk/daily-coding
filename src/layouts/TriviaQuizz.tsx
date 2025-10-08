@@ -36,7 +36,11 @@ const TriviaQuizz = () => {
               <label
                 htmlFor={`option-${i}`}
                 key={`${i}`}
-                className="p-2 my-2 rounded-lg border-2 border-gray-200 hover:border-gray-100 min-w-[200px] hover:bg-gray-300 cursor-pointer"
+                className={`p-2 my-2 rounded-lg border-2 border-gray-200 hover:border-gray-100 min-w-[200px] hover:bg-gray-300 cursor-pointer ${
+                  selectedAnswer === answer
+                    ? 'border-blue-500 bg-blue-500 text-white'
+                    : 'border-gray-300 bg-gray-100 hover:bg-blue-500 hover:text-white text-black'
+                }`}
               >
                 <input
                   type="radio"
@@ -45,6 +49,7 @@ const TriviaQuizz = () => {
                   name="quiz-option"
                   checked={selectedAnswer === answer}
                   onChange={handleChange}
+                  className="hidden"
                 />
                 {answer}
               </label>
