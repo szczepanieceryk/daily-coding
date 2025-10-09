@@ -22,6 +22,7 @@ const useTriviaQuizz = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [correctAnswer, setCorrectAnswer] = useState<string>('');
   const [responseMessage, setResponseMessage] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newAnswer = e.target.value;
@@ -39,13 +40,14 @@ const useTriviaQuizz = () => {
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     try {
-      const res: Response = await fetch('https://opentdb.com/api.php?amount=10', {
+      const res: Response = await fetch('https://opentdb.com/api.php?amount=1', {
         headers: {
           Accept: 'application/json',
         },
       });
 
       if (!res.ok) {
+        setErrorMessage("We can't show you a question right now :( . Try later sometime");
         throw new Error(`HTTP Response Error ${res.status}`);
       }
 
@@ -62,7 +64,9 @@ const useTriviaQuizz = () => {
       setOptions(options);
       setSelectedAnswer('');
       setResponseMessage('');
+      setErrorMessage('');
     } catch (error) {
+      setErrorMessage("We can't show you a question right now :( . Try later sometime");
       console.error(`Error: ${error}`);
     }
   };
@@ -73,6 +77,7 @@ const useTriviaQuizz = () => {
     options,
     selectedAnswer,
     responseMessage,
+    errorMessage,
     handleChange,
     handleSubmit,
   };

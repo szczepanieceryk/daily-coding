@@ -9,6 +9,7 @@ const TriviaQuizz = () => {
     options,
     selectedAnswer,
     responseMessage,
+    errorMessage,
     handleChange,
     handleSubmit,
   } = useTriviaQuizz();
@@ -58,6 +59,7 @@ const TriviaQuizz = () => {
         )}
 
         <span className="block h-[20px] font-medium">{responseMessage ? responseMessage : ''}</span>
+        {errorMessage && <span className="block font-medium text-red-400">{errorMessage}</span>}
         <Button style="primary" type="submit" content="Show Question" onClick={handleSubmit} />
       </form>
     </div>
