@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { decodeHtmlResponse } from '../utils/helpers';
 
 interface TriviaQuestion {
   category: string;
@@ -51,13 +52,14 @@ const useTriviaQuizz = () => {
 
       const data: TriviaReponse = await res.json();
       const { category, question, correct_answer, incorrect_answers } = data.results[0];
+      console.log(data.results[0]);
       setCorrectAnswer(correctAnswer);
       const options: string[] = [...incorrect_answers, correct_answer].sort(
         () => Math.random() - 0.5,
       );
 
-      setQuestion(question);
-      setCategory(category);
+      setQuestion(decodeHtmlResponse(question));
+      setCategory(decodeHtmlResponse(category));
       setOptions(options);
       setSelectedAnswer('');
       setResponseMessage('');

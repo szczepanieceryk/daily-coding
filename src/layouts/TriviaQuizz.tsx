@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../components/Button';
 import useTriviaQuizz from '../hooks/useTriviaQuizz';
-
+import { decodeHtmlResponse } from '../utils/helpers';
 const TriviaQuizz = () => {
   const {
     question,
@@ -51,7 +51,7 @@ const TriviaQuizz = () => {
                   onChange={handleChange}
                   className="hidden"
                 />
-                {answer}
+                {decodeHtmlResponse(answer)}
               </label>
             )) || []}
           </fieldset>
