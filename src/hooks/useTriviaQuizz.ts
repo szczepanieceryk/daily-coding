@@ -24,9 +24,10 @@ const useTriviaQuizz = () => {
   const [responseMessage, setResponseMessage] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedAnswer(e.target.value);
+    const newAnswer = e.target.value;
+    setSelectedAnswer(newAnswer);
 
-    if (isAnswerCorrect()) {
+    if (newAnswer === correctAnswer) {
       console.log('correct answer !!');
       setResponseMessage('Good answer! 🎉');
     } else {
@@ -34,8 +35,6 @@ const useTriviaQuizz = () => {
       setResponseMessage('Wrong answer :( . Try again');
     }
   };
-
-  const isAnswerCorrect = (): boolean => selectedAnswer === correctAnswer;
 
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
@@ -53,7 +52,7 @@ const useTriviaQuizz = () => {
       const data: TriviaReponse = await res.json();
       const { category, question, correct_answer, incorrect_answers } = data.results[0];
       console.log(data.results[0]);
-      setCorrectAnswer(correctAnswer);
+      setCorrectAnswer(correct_answer);
       const options: string[] = [...incorrect_answers, correct_answer].sort(
         () => Math.random() - 0.5,
       );
