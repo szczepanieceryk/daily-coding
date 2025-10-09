@@ -30,10 +30,10 @@ const useTriviaQuizz = () => {
 
     if (newAnswer === correctAnswer) {
       console.log('correct answer !!');
-      setResponseMessage('Good answer! 🎉');
+      setResponseMessage('✅ Good answer! 🎉');
     } else {
       console.log('Uncorrect Answer :(');
-      setResponseMessage('Wrong answer :( . Try again');
+      setResponseMessage(`❌ Wrong answer! Correct: ${correctAnswer}`);
     }
   };
 
