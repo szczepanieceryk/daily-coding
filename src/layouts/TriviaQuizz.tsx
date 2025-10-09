@@ -16,11 +16,11 @@ const TriviaQuizz = () => {
     handleSubmit,
   } = useTriviaQuizz();
 
-  const getOptionClassName = (answer: string) => {
+  const getOptionClassName = (answer: string): string => {
     const baseClasses =
       'p-2 my-2 rounded-lg border-2 min-w-[200px] cursor-pointer transition-colors';
 
-    // Jeśli użytkownik jeszcze nie odpowiedział
+    // if user still didn't answerd
     if (!isAnswered) {
       return `${baseClasses} ${
         selectedAnswer === answer
@@ -29,15 +29,15 @@ const TriviaQuizz = () => {
       }`;
     }
 
-    // Po odpowiedzi - pokaż kolory
+    // After answer show appropraite color
     if (answer === correctAnswer) {
-      // Poprawna odpowiedź zawsze na zielono
+      // Correct answer - green
       return `${baseClasses} border-green-500 bg-green-500 text-white`;
     } else if (answer === selectedAnswer) {
-      // Wybrana zła odpowiedź na czerwono
+      // Wrong answer - red
       return `${baseClasses} border-red-500 bg-red-500 text-white`;
     } else {
-      // Pozostałe nieaktywne
+      // Disabled options - gray
       return `${baseClasses} border-gray-300 bg-gray-200 text-gray-500`;
     }
   };
