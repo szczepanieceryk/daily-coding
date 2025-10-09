@@ -21,12 +21,15 @@ const useTriviaQuizz = () => {
   const [options, setOptions] = useState<string[]>(['']);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [correctAnswer, setCorrectAnswer] = useState<string>('');
+  const [isAnswered, setIsAnswered] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isAnswered) return;
     const newAnswer = e.target.value;
     setSelectedAnswer(newAnswer);
+    setIsAnswered(true);
 
     if (newAnswer === correctAnswer) {
       console.log('correct answer !!');
@@ -63,6 +66,7 @@ const useTriviaQuizz = () => {
       setCategory(decodeHtmlResponse(category));
       setOptions(options);
       setSelectedAnswer('');
+      setIsAnswered(false);
       setResponseMessage('');
       setErrorMessage('');
     } catch (error) {
@@ -76,6 +80,8 @@ const useTriviaQuizz = () => {
     category,
     options,
     selectedAnswer,
+    correctAnswer,
+    isAnswered,
     responseMessage,
     errorMessage,
     handleChange,
