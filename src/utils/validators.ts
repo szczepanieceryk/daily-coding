@@ -1,8 +1,10 @@
-export const validateEmailInput = (email: string): string => {
+export const validateEmailInput = (email: string): string[] => {
+  const errors: string[] = [];
+
   if (!email) {
-    return 'Email canot be empty';
+    errors.push('Email canot be empty');
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return 'Please enter a valid email address';
+    errors.push('Please enter a valid email address');
   }
-  return '';
+  return errors;
 };
