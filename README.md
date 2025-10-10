@@ -28,4 +28,4 @@ A code snippets with it's own functionality
 ### **Snippets**
 
 - custom hook for using LocalStorage
-- from validation tests using Vitest
+- form validation tests using Vitest
