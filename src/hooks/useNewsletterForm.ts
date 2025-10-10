@@ -3,14 +3,14 @@ import { validateEmailInput } from '../utils/validators';
 
 const useNewsletterForm = () => {
   const [email, setEmail] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string[]>([]);
   const [responseMessage, setResponseMessage] = useState<string>('');
   const [isSuibmitting, setIsSuibmitting] = useState<boolean>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const result = e.target.value;
     setEmail(result);
-    if (errorMessage) setErrorMessage('');
+    if (errorMessage) setErrorMessage([]);
     if (responseMessage) setResponseMessage('');
   };
 
@@ -39,7 +39,7 @@ const useNewsletterForm = () => {
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
 
-    setErrorMessage('');
+    setErrorMessage([]);
     setResponseMessage('');
 
     const formValidator = validateEmailInput(email);
@@ -56,7 +56,7 @@ const useNewsletterForm = () => {
         setResponseMessage(response.message);
         setEmail('');
       } else {
-        setErrorMessage(response.message);
+        setErrorMessage([response.message]);
       }
     } catch (error) {
       console.log('Error: ', error);

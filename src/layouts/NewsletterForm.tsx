@@ -37,9 +37,11 @@ const NewsletterForm: React.FC = () => {
       <div>
         {errorMessage && (
           <ul>
-            <li>
-              <small className="text-red-400">{errorMessage}</small>
-            </li>
+            {errorMessage?.map?.((error) => (
+              <li key={error}>
+                <small className="text-red-400">{error}</small>
+              </li>
+            )) || []}
           </ul>
         )}
         {responseMessage && (
