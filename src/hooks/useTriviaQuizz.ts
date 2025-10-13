@@ -18,7 +18,7 @@ interface TriviaReponse {
 const useTriviaQuizz = () => {
   const [question, setQuestion] = useState<string>('');
   const [category, setCategory] = useState<string>('');
-  const [options, setOptions] = useState<string[]>(['']);
+  const [options, setOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [correctAnswer, setCorrectAnswer] = useState<string>('');
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
@@ -58,13 +58,13 @@ const useTriviaQuizz = () => {
       const { category, question, correct_answer, incorrect_answers } = data.results[0];
       console.log(data.results[0]);
       setCorrectAnswer(correct_answer);
-      const options: string[] = [...incorrect_answers, correct_answer].sort(
+      const shuffledOptions: string[] = [...incorrect_answers, correct_answer].sort(
         () => Math.random() - 0.5,
       );
 
       setQuestion(decodeHtmlResponse(question));
       setCategory(decodeHtmlResponse(category));
-      setOptions(options);
+      setOptions(shuffledOptions);
       setSelectedAnswer('');
       setIsAnswered(false);
       setResponseMessage('');

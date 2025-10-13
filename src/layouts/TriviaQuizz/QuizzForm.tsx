@@ -77,7 +77,12 @@ const QuizForm = () => {
 
       <span className="block font-medium">{responseMessage ? responseMessage : ''}</span>
       {errorMessage && <span className="block font-medium text-red-400">{errorMessage}</span>}
-      <Button style="primary" type="submit" content="Show Question" onClick={handleSubmit} />
+      <Button
+        style="primary"
+        type="submit"
+        content="Show Question"
+        onClick={() => console.log('Form Submit')}
+      />
     </form>
   );
 };
