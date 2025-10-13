@@ -24,7 +24,6 @@ const JokeGenerator = () => {
           content={`${generatedJoke ? 'Another one' : 'Tell me a joke'}`}
           style="primary"
           type="submit"
-          onClick={handleSubmit}
         />
       </form>
     </div>
