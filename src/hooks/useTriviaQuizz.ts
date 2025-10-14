@@ -45,13 +45,18 @@ const questionCategory = {
 
 const useTriviaQuizz = () => {
   const [question, setQuestion] = useState<string>('');
-  const [category, setCategory] = useState<string>('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [options, setOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [correctAnswer, setCorrectAnswer] = useState<string>('');
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCategory = e.target.value;
+    setSelectedCategory(selectedCategory);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (isAnswered) return;
@@ -70,8 +75,10 @@ const useTriviaQuizz = () => {
 
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
+    const baseURL = 'https://opentdb.com/api.php?amount=1';
+    const API_URL = selectedCategory ? `${baseURL}&category=${selectedCategory}` : baseURL;
     try {
-      const res: Response = await fetch('https://opentdb.com/api.php?amount=1', {
+      const res: Response = await fetch(API_URL, {
         headers: {
           Accept: 'application/json',
         },
@@ -83,7 +90,7 @@ const useTriviaQuizz = () => {
       }
 
       const data: TriviaReponse = await res.json();
-      const { category, question, correct_answer, incorrect_answers } = data.results[0];
+      const { question, correct_answer, incorrect_answers } = data.results[0];
       console.log(data.results[0]);
       setCorrectAnswer(correct_answer);
       const shuffledOptions: string[] = [...incorrect_answers, correct_answer].sort(
@@ -91,7 +98,6 @@ const useTriviaQuizz = () => {
       );
 
       setQuestion(decodeHtmlResponse(question));
-      setCategory(decodeHtmlResponse(category));
       setOptions(shuffledOptions);
       setSelectedAnswer('');
       setIsAnswered(false);
@@ -105,7 +111,6 @@ const useTriviaQuizz = () => {
 
   return {
     question,
-    category,
     questionCategory,
     options,
     selectedAnswer,
@@ -114,6 +119,7 @@ const useTriviaQuizz = () => {
     responseMessage,
     errorMessage,
     handleChange,
+    handleSelectChange,
     handleSubmit,
   };
 };

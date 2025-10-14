@@ -6,7 +6,6 @@ import Button from '../../components/Button';
 const QuizForm = () => {
   const {
     question,
-    category,
     questionCategory,
     options,
     selectedAnswer,
@@ -15,6 +14,7 @@ const QuizForm = () => {
     responseMessage,
     errorMessage,
     handleChange,
+    handleSelectChange,
     handleSubmit,
   } = useTriviaQuizz();
 
@@ -44,18 +44,14 @@ const QuizForm = () => {
     }
   };
 
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value);
-  };
-
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="question-category-id" className="block">
-        Select category
+        Select category :
         <select
           name="question-category"
           id="question-category-id"
-          className="block p-2 border-2 border-gray-200 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-black"
+          className="block p-2 border-2 border-gray-200 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-center text-black"
           onChange={handleSelectChange}
         >
           <option value="any">Random</option>
@@ -66,12 +62,6 @@ const QuizForm = () => {
           ))}
         </select>
       </label>
-
-      {category && (
-        <span className="block mb-4">
-          <strong>Category</strong>: {category}
-        </span>
-      )}
 
       {question && (
         <span className="block my-4 p-6 rounded-md bg-gray-700 text-white">{question}</span>
