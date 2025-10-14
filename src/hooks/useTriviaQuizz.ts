@@ -45,7 +45,7 @@ const questionCategory = {
 
 const useTriviaQuizz = () => {
   const [question, setQuestion] = useState<string>('');
-  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [options, setOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [correctAnswer, setCorrectAnswer] = useState<string>('');
