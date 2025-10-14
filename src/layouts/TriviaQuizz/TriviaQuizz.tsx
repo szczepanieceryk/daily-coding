@@ -1,4 +1,5 @@
 import React from 'react';
+import QuizForm from './QuizzForm';
 
 const TriviaQuizz = () => {
   return (
@@ -6,7 +7,7 @@ const TriviaQuizz = () => {
       <span className="block">
         <strong>Trivia Quizz</strong>
       </span>
-      <TriviaQuizz />
+      <QuizForm />
     </div>
   );
 };

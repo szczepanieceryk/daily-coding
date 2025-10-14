@@ -6,7 +6,7 @@ import useLocalStorage from './hooks/useLocalStorage';
 import ThemeSwitch from './components/ThemeSwitch';
 import ThemeSwitcher from './layouts/ThemeSwitcher';
 import JokeGenerator from './layouts/JokeGenerator';
-// import TriviaQuizz from './layouts/TriviaQuizz/TriviaQuizz';
+import TriviaQuizz from './layouts/TriviaQuizz/TriviaQuizz';
 const App = () => {
   const [theme, setTheme] = useLocalStorage('theme', 'light');
   return (
@@ -53,7 +53,7 @@ const App = () => {
         <AutoCompleateSearch />
         <ThemeSwitcher theme={theme} setTheme={setTheme} />
         <JokeGenerator />
-        {/* <TriviaQuizz /> */}
+        <TriviaQuizz />
       </div>
     </div>
   );
