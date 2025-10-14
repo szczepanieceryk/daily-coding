@@ -7,6 +7,7 @@ const QuizForm = () => {
   const {
     question,
     category,
+    questionCategory,
     options,
     selectedAnswer,
     correctAnswer,
@@ -43,8 +44,29 @@ const QuizForm = () => {
     }
   };
 
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(e.target.value);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor="question-category-id" className="block">
+        Select category
+        <select
+          name="question-category"
+          id="question-category-id"
+          className="block p-2 border-2 border-gray-200 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-black"
+          onChange={handleSelectChange}
+        >
+          <option value="any">Random</option>
+          {Object.entries(questionCategory).map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
+      </label>
+
       {category && (
         <span className="block mb-4">
           <strong>Category</strong>: {category}
