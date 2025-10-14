@@ -8,8 +8,6 @@ import ThemeSwitcher from './layouts/ThemeSwitcher';
 import JokeGenerator from './layouts/JokeGenerator';
 // import TriviaQuizz from './layouts/TriviaQuizz/TriviaQuizz';
 const App = () => {
-  const handleClick = () => console.log('Button clicked!');
-
   const [theme, setTheme] = useLocalStorage('theme', 'light');
   return (
     <div
@@ -34,24 +32,13 @@ const App = () => {
         </span>
         <div className="my-[1em] flex flex-wrap justify-center md:justify-between max-w-[250px] md:max-w-[550px] mx-auto">
           {/* Primary button */}
-          <Button content="Primary button" style="primary" onClick={handleClick} type="button" />
+          <Button content="Primary button" style="primary" type="button" />
 
           {/* Secondary button */}
-          <Button
-            content="Secondary button"
-            style="secondary"
-            onClick={handleClick}
-            type="button"
-          />
+          <Button content="Secondary button" style="secondary" type="button" />
 
           {/* Disabled button */}
-          <Button
-            content="Disabled button"
-            style="primary"
-            onClick={handleClick}
-            type="button"
-            disabled={true}
-          />
+          <Button content="Disabled button" style="primary" type="button" disabled={true} />
         </div>
 
         <span className="block mt-[4em]">
