@@ -1,7 +1,7 @@
 import React from 'react';
 import useAutoCompleate from '../hooks/useAutoComplete';
 
-const AutoCompleateSearch = () => {
+const AutoCompleateSearch: React.FC = () => {
   const { apiCallCount, loading, results, searachTerm, debouncedSearchTerm, handleChange } =
     useAutoCompleate();
 
@@ -18,7 +18,7 @@ const AutoCompleateSearch = () => {
           type="text"
           placeholder="Search users..."
           value={searachTerm}
-          className="p-3 w-full border-2 rounded-lg border-gray-100 focus:ring-2 focus:ring-blue-300 focus:border-transparent outline-none"
+          className="p-3 w-full border-2 rounded-lg border-gray-100 focus:ring-2 focus:ring-blue-300 focus:border-transparent outline-none text-black"
           onChange={handleChange}
         />
       </div>
@@ -46,7 +46,7 @@ const AutoCompleateSearch = () => {
           {results?.map?.((user) => (
             <div
               key={user.id}
-              className="mb-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+              className="mb-2 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer"
             >
               <div className="font-medium text-gray-800">{user.name}</div>
               <div className="text-sm text-gray-600">{user.email}</div>
