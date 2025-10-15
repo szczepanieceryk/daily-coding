@@ -19,7 +19,7 @@ const NewsletterForm: React.FC = () => {
           type="email"
           name="email-input"
           placeholder="Your email address"
-          className="p-2 rounded-md md:rounded-tr-none md:rounded-br-none border-gray-300 w-full h-[48px]"
+          className="p-2 rounded-md md:rounded-tr-none md:rounded-br-none border-gray-300 w-full h-[48px] text-black"
           required
           value={email}
           onChange={handleChange}
@@ -30,7 +30,6 @@ const NewsletterForm: React.FC = () => {
           content="subscribe"
           type="submit"
           style="primary"
-          onClick={handleSubmit}
           className="uppercase md:rounded-tl-none md:rounded-bl-none"
         />
       </div>
