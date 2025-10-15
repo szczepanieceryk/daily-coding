@@ -51,7 +51,7 @@ const QuizForm = () => {
         <select
           name="question-category"
           id="question-category-id"
-          className="block p-2 border-2 border-gray-200 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-center text-black"
+          className="block p-2 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-center bg-gray-700 text-white"
           onChange={handleSelectChange}
         >
           <option value="any">Random</option>
