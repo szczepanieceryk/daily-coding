@@ -47,7 +47,12 @@ const QuizForm = () => {
       {errorMessage && <span className="block font-medium text-red-400">{errorMessage}</span>}
 
       {/* Form submit button */}
-      <Button style="primary" type="submit" content="Show Question" />
+      <Button
+        style="primary"
+        type="submit"
+        content={isAnswered ? 'Next Question' : 'Show Question'}
+        disabled={options.length > 0 && !isAnswered}
+      />
     </form>
   );
 };
