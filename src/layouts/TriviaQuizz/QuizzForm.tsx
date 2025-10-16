@@ -14,6 +14,7 @@ const QuizForm = () => {
     selectedAnswer,
     responseMessage,
     errorMessage,
+    handleDifficultyChange,
     handleChange,
     handleSelectChange,
     handleSubmit,
@@ -23,6 +24,20 @@ const QuizForm = () => {
     <form onSubmit={handleSubmit}>
       {/* Display category select */}
       <CategorySelect questionCategory={questionCategory} handleSelectChange={handleSelectChange} />
+
+      <label htmlFor="question-difficulty-id">
+        Select difficulty
+        <select
+          name="question-difficulty"
+          id="question-difficulty-id"
+          className="block p-2 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-center bg-gray-700 text-white"
+          onChange={handleDifficultyChange}
+        >
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </label>
 
       {/* Display question */}
       {question && (

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { decodeHtmlResponse } from '../utils/helpers';
 
 interface TriviaQuestion {
@@ -46,6 +46,7 @@ const questionCategory = {
 const useTriviaQuizz = () => {
   const [question, setQuestion] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [difficulty, setDifficulty] = useState<string>('easy');
   const [options, setOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string>('');
   const [correctAnswer, setCorrectAnswer] = useState<string>('');
@@ -53,12 +54,17 @@ const useTriviaQuizz = () => {
   const [responseMessage, setResponseMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const selectedCategory = e.target.value;
     setSelectedCategory(selectedCategory);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDifficultyChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+    const selectedDifficulty = e.target.value;
+    setDifficulty(selectedDifficulty);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (isAnswered) return;
     const newAnswer = e.target.value;
     setSelectedAnswer(newAnswer);
@@ -76,7 +82,9 @@ const useTriviaQuizz = () => {
   const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault();
     const baseURL = 'https://opentdb.com/api.php?amount=1';
-    const API_URL = selectedCategory ? `${baseURL}&category=${selectedCategory}` : baseURL;
+    const API_URL = selectedCategory
+      ? `${baseURL}&category=${selectedCategory}&difficulty=${difficulty}`
+      : baseURL;
     try {
       const res: Response = await fetch(API_URL, {
         headers: {
@@ -118,6 +126,7 @@ const useTriviaQuizz = () => {
     isAnswered,
     responseMessage,
     errorMessage,
+    handleDifficultyChange,
     handleChange,
     handleSelectChange,
     handleSubmit,
