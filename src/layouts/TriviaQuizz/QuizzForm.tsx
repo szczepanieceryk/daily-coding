@@ -3,6 +3,7 @@ import useTriviaQuizz from '../../hooks/useTriviaQuizz';
 import Button from '../../components/Button';
 import AnswerOptions from './AnswerOptions';
 import CategorySelect from './CategorySelect';
+import DifficultySelect from './DifficultySelect';
 
 const QuizForm = () => {
   const {
@@ -25,19 +26,8 @@ const QuizForm = () => {
       {/* Display category select */}
       <CategorySelect questionCategory={questionCategory} handleSelectChange={handleSelectChange} />
 
-      <label htmlFor="question-difficulty-id">
-        Select difficulty
-        <select
-          name="question-difficulty"
-          id="question-difficulty-id"
-          className="block p-2 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-center bg-gray-700 text-white"
-          onChange={handleDifficultyChange}
-        >
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-      </label>
+      {/* Display difficulty select */}
+      <DifficultySelect handleDifficultyChange={handleDifficultyChange} />
 
       {/* Display question */}
       {question && (
