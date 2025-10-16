@@ -16,18 +16,21 @@ const QuizForm = () => {
     responseMessage,
     errorMessage,
     handleDifficultyChange,
-    handleChange,
-    handleSelectChange,
+    handleAnswerChange,
+    handleCategoryChange,
     handleSubmit,
   } = useTriviaQuizz();
 
   return (
     <form onSubmit={handleSubmit}>
       {/* Display category select */}
-      <CategorySelect questionCategory={questionCategory} handleSelectChange={handleSelectChange} />
+      <CategorySelect
+        questionCategory={questionCategory}
+        handleSelectChange={handleCategoryChange}
+      />
 
       {/* Display difficulty select */}
-      <DifficultySelect handleDifficultyChange={handleDifficultyChange} />
+      <DifficultySelect handleChange={handleDifficultyChange} />
 
       {/* Display question */}
       {question && (
@@ -41,7 +44,7 @@ const QuizForm = () => {
           selectedAnswer={selectedAnswer}
           correctAnswer={correctAnswer}
           isAnswered={isAnswered}
-          handleChange={handleChange}
+          handleChange={handleAnswerChange}
         />
       )}
 

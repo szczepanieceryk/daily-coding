@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface DifficultySelectProps {
-  handleDifficultyChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
-const DifficultySelect: React.FC<DifficultySelectProps> = ({ handleDifficultyChange }) => {
+const DifficultySelect: React.FC<DifficultySelectProps> = ({ handleChange }) => {
   return (
     <label htmlFor="question-difficulty-id">
       Select difficulty
@@ -11,7 +11,7 @@ const DifficultySelect: React.FC<DifficultySelectProps> = ({ handleDifficultyCha
         name="question-difficulty"
         id="question-difficulty-id"
         className="block p-2 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-center bg-gray-700 text-white"
-        onChange={handleDifficultyChange}
+        onChange={handleChange}
       >
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>

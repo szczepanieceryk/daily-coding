@@ -54,7 +54,7 @@ const useTriviaQuizz = () => {
   const [responseMessage, setResponseMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const selectedCategory = e.target.value;
     setSelectedCategory(selectedCategory);
   };
@@ -64,7 +64,7 @@ const useTriviaQuizz = () => {
     setDifficulty(selectedDifficulty);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleAnswerChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (isAnswered) return;
     const newAnswer = e.target.value;
     setSelectedAnswer(newAnswer);
@@ -127,8 +127,8 @@ const useTriviaQuizz = () => {
     responseMessage,
     errorMessage,
     handleDifficultyChange,
-    handleChange,
-    handleSelectChange,
+    handleAnswerChange,
+    handleCategoryChange,
     handleSubmit,
   };
 };
