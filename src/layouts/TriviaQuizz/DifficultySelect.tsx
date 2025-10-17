@@ -6,11 +6,6 @@ const difficultyLevels = ['easy', 'medium', 'hard'];
 const DifficultySelect: React.FC = () => {
   const { difficulty, setDifficulty } = useDifficulty();
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedDifficulty = e.target.value;
-    setDifficulty(selectedDifficulty);
-  };
-
   return (
     <label htmlFor="question-difficulty-id">
       Select difficulty
@@ -18,7 +13,7 @@ const DifficultySelect: React.FC = () => {
         name="question-difficulty"
         id="question-difficulty-id"
         className="block p-2 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-center bg-gray-700 text-white"
-        onChange={handleChange}
+        onChange={(e) => setDifficulty(e.target.value)}
         value={difficulty}
       >
         {difficultyLevels?.map?.((lvl) => (
