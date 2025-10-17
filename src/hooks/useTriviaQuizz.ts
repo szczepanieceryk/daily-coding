@@ -53,7 +53,6 @@ const useTriviaQuizz = () => {
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
-
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const selectedCategory = e.target.value;
     setSelectedCategory(selectedCategory);
@@ -99,8 +98,9 @@ const useTriviaQuizz = () => {
 
       const data: TriviaReponse = await res.json();
       const { question, correct_answer, incorrect_answers } = data.results[0];
-      console.log(data.results[0]);
+
       setCorrectAnswer(correct_answer);
+
       const shuffledOptions: string[] = [...incorrect_answers, correct_answer].sort(
         () => Math.random() - 0.5,
       );

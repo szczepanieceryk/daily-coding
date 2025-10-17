@@ -4,7 +4,6 @@ import Button from '../../components/Button';
 import AnswerOptions from './AnswerOptions';
 import CategorySelect from './CategorySelect';
 import DifficultySelect from './DifficultySelect';
-
 const QuizForm = () => {
   const {
     question,
@@ -15,7 +14,6 @@ const QuizForm = () => {
     selectedAnswer,
     responseMessage,
     errorMessage,
-    handleDifficultyChange,
     handleAnswerChange,
     handleCategoryChange,
     handleSubmit,
@@ -30,7 +28,7 @@ const QuizForm = () => {
       />
 
       {/* Display difficulty select */}
-      <DifficultySelect handleChange={handleDifficultyChange} />
+      <DifficultySelect />
 
       {/* Display question */}
       {question && (

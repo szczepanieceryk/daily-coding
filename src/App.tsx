@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import Button from './components/Button';
 import NewsletterForm from './layouts/NewsletterForm';
 import AutoCompleateSearch from './layouts/AutoCompleteSearch';
@@ -7,8 +7,18 @@ import ThemeSwitch from './components/ThemeSwitch';
 import ThemeSwitcher from './layouts/ThemeSwitcher';
 import JokeGenerator from './layouts/JokeGenerator';
 import TriviaQuizz from './layouts/TriviaQuizz/TriviaQuizz';
+
+type DifficultyContextType = {
+  difficulty: string;
+  setDifficulty: (difficulty: string) => void;
+};
+
+export const DifficultyContext = createContext<DifficultyContextType | undefined>(undefined);
+
 const App = () => {
   const [theme, setTheme] = useLocalStorage('theme', 'light');
+  const [difficulty, setDifficulty] = useLocalStorage('difficulty', 'easy');
+
   return (
     <div
       className={`max-w-8xl p-4 mb-4 mx-auto  rounded-lg shadow-sm ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
@@ -53,7 +63,10 @@ const App = () => {
         <AutoCompleateSearch />
         <ThemeSwitcher theme={theme} setTheme={setTheme} />
         <JokeGenerator />
-        <TriviaQuizz />
+
+        <DifficultyContext.Provider value={{ difficulty, setDifficulty }}>
+          <TriviaQuizz />
+        </DifficultyContext.Provider>
       </div>
     </div>
   );

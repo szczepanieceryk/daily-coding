@@ -1,12 +1,16 @@
 import React from 'react';
-
-interface DifficultySelectProps {
-  handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-}
+import { useDifficulty } from '../../hooks/useDifficulty';
 
 const difficultyLevels = ['easy', 'medium', 'hard'];
 
-const DifficultySelect: React.FC<DifficultySelectProps> = ({ handleChange }) => {
+const DifficultySelect: React.FC = () => {
+  const { difficulty, setDifficulty } = useDifficulty();
+
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedDifficulty = e.target.value;
+    setDifficulty(selectedDifficulty);
+  };
+
   return (
     <label htmlFor="question-difficulty-id">
       Select difficulty
@@ -15,6 +19,7 @@ const DifficultySelect: React.FC<DifficultySelectProps> = ({ handleChange }) => 
         id="question-difficulty-id"
         className="block p-2 rounded-md my-2 mx-auto max-w-[350px] cursor-pointer text-center bg-gray-700 text-white"
         onChange={handleChange}
+        value={difficulty}
       >
         {difficultyLevels?.map?.((lvl) => (
           <option key={lvl} value={lvl}>
