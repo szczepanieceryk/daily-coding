@@ -3,7 +3,7 @@ import useTriviaQuizz from '../../hooks/useTriviaQuizz';
 import Button from '../../components/Button';
 import AnswerOptions from './AnswerOptions';
 import CategorySelect from './CategorySelect';
-import DifficultySelect from './DifficultySelect';
+import MoreOptionsIcon from './MoreOptionsIcon';
 const QuizForm = () => {
   const {
     question,
@@ -21,21 +21,13 @@ const QuizForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="relative">
-      <div className="flex flex-col flex-wrap gap-[5px] absolute -top-2 right-2 cursor-pointer">
-        <div className="h-[5px] w-[5px] rounded-xl bg-white"></div>
-        <div className="h-[5px] w-[5px] rounded-xl bg-white"></div>
-        <div className="h-[5px] w-[5px] rounded-xl bg-white"></div>
-      </div>
-
+      <MoreOptionsIcon />
       <div>
         {/* Display category select */}
         <CategorySelect
           questionCategory={questionCategory}
           handleSelectChange={handleCategoryChange}
         />
-
-        {/* Display difficulty select */}
-        <DifficultySelect />
 
         {/* Display question */}
         {question && (
