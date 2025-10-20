@@ -53,6 +53,14 @@ const useTriviaQuizz = () => {
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const setInitialState = () => {
+    setSelectedAnswer('');
+    setIsAnswered(false);
+    setResponseMessage('');
+    setErrorMessage('');
+  };
+
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const selectedCategory = e.target.value;
     setSelectedCategory(selectedCategory);
@@ -107,10 +115,8 @@ const useTriviaQuizz = () => {
 
       setQuestion(decodeHtmlResponse(question));
       setOptions(shuffledOptions);
-      setSelectedAnswer('');
-      setIsAnswered(false);
-      setResponseMessage('');
-      setErrorMessage('');
+
+      setInitialState();
     } catch (error) {
       setErrorMessage("We can't show you a question right now :( . Try later sometime");
       console.error(`Error: ${error}`);
