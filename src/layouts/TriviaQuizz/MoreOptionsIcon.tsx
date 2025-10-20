@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import DifficultySelect from './DifficultySelect';
 
 const MoreOptionsIcon = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div>
+    <div ref={popupRef}>
       <div
         className="flex flex-col flex-wrap gap-[5px] absolute -top-2 right-2 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
