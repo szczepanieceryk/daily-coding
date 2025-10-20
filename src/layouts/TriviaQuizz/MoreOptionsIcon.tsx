@@ -1,8 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import DifficultySelect from './DifficultySelect';
 
-const MoreOptionsIcon = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+interface MoreOptionsIconProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
+
+const MoreOptionsIcon: React.FC<MoreOptionsIconProps> = ({ isOpen, setIsOpen }) => {
   const popupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,7 +37,7 @@ const MoreOptionsIcon = () => {
       </div>
 
       {/* Difficulty Popup */}
-      {isOpen && <DifficultySelect />}
+      {isOpen && <DifficultySelect isOpen={isOpen} setIsOpen={setIsOpen} />}
     </div>
   );
 };

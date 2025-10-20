@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useTriviaQuizz from '../../hooks/useTriviaQuizz';
 import Button from '../../components/Button';
 import AnswerOptions from './AnswerOptions';
@@ -19,9 +19,11 @@ const QuizForm = () => {
     handleSubmit,
   } = useTriviaQuizz();
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   return (
     <form onSubmit={handleSubmit} className="relative">
-      <MoreOptionsIcon />
+      <MoreOptionsIcon isOpen={isOpen} setIsOpen={setIsOpen} />
       <div>
         {/* Display category select */}
         <CategorySelect
