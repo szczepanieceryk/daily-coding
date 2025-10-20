@@ -20,45 +20,53 @@ const QuizForm = () => {
   } = useTriviaQuizz();
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* Display category select */}
-      <CategorySelect
-        questionCategory={questionCategory}
-        handleSelectChange={handleCategoryChange}
-      />
+    <form onSubmit={handleSubmit} className="relative">
+      <div className="flex flex-col flex-wrap gap-[5px] absolute -top-2 right-2 cursor-pointer">
+        <div className="h-[5px] w-[5px] rounded-xl bg-white"></div>
+        <div className="h-[5px] w-[5px] rounded-xl bg-white"></div>
+        <div className="h-[5px] w-[5px] rounded-xl bg-white"></div>
+      </div>
 
-      {/* Display difficulty select */}
-      <DifficultySelect />
-
-      {/* Display question */}
-      {question && (
-        <span className="block my-4 p-6 rounded-md bg-gray-700 text-white">{question}</span>
-      )}
-
-      {/* Display possible answers */}
-      {question && options.length > 0 && (
-        <AnswerOptions
-          options={options}
-          selectedAnswer={selectedAnswer}
-          correctAnswer={correctAnswer}
-          isAnswered={isAnswered}
-          handleChange={handleAnswerChange}
+      <div>
+        {/* Display category select */}
+        <CategorySelect
+          questionCategory={questionCategory}
+          handleSelectChange={handleCategoryChange}
         />
-      )}
 
-      {/* Display response message */}
-      <span className="block font-medium">{responseMessage ? responseMessage : ''}</span>
+        {/* Display difficulty select */}
+        <DifficultySelect />
 
-      {/* Display error message */}
-      {errorMessage && <span className="block font-medium text-red-400">{errorMessage}</span>}
+        {/* Display question */}
+        {question && (
+          <span className="block my-4 p-6 rounded-md bg-gray-700 text-white">{question}</span>
+        )}
 
-      {/* Form submit button */}
-      <Button
-        style="primary"
-        type="submit"
-        content={isAnswered ? 'Next Question' : 'Show Question'}
-        disabled={options.length > 0 && !isAnswered}
-      />
+        {/* Display possible answers */}
+        {question && options.length > 0 && (
+          <AnswerOptions
+            options={options}
+            selectedAnswer={selectedAnswer}
+            correctAnswer={correctAnswer}
+            isAnswered={isAnswered}
+            handleChange={handleAnswerChange}
+          />
+        )}
+
+        {/* Display response message */}
+        <span className="block font-medium">{responseMessage ? responseMessage : ''}</span>
+
+        {/* Display error message */}
+        {errorMessage && <span className="block font-medium text-red-400">{errorMessage}</span>}
+
+        {/* Form submit button */}
+        <Button
+          style="primary"
+          type="submit"
+          content={isAnswered ? 'Next Question' : 'Show Question'}
+          disabled={options.length > 0 && !isAnswered}
+        />
+      </div>
     </form>
   );
 };
