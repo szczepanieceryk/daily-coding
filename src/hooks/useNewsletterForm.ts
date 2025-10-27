@@ -5,7 +5,7 @@ const useNewsletterForm = () => {
   const [email, setEmail] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string[]>([]);
   const [responseMessage, setResponseMessage] = useState<string>('');
-  const [isSuibmitting, setIsSuibmitting] = useState<boolean>(false);
+  const [isSuibmitting, setIsSubmitting] = useState<boolean>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const result = e.target.value;
@@ -43,15 +43,17 @@ const useNewsletterForm = () => {
     setResponseMessage('');
 
     const formValidator = validateEmailInput(email);
-    if (formValidator) {
+
+    if (formValidator && formValidator.length > 0) {
       setErrorMessage(formValidator);
       return;
     }
 
-    setIsSuibmitting(true);
+    setIsSubmitting(true);
 
     try {
       const response = await mockApiCall();
+
       if (response.success) {
         setResponseMessage(response.message);
         setEmail('');
@@ -61,7 +63,7 @@ const useNewsletterForm = () => {
     } catch (error) {
       console.log('Error: ', error);
     } finally {
-      setIsSuibmitting(false);
+      setIsSubmitting(false);
     }
   };
 

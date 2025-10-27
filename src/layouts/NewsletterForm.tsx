@@ -46,7 +46,7 @@ const NewsletterForm: React.FC = () => {
         {responseMessage && (
           <ul>
             <li>
-              <small>{responseMessage}</small>
+              <small className="text-green-500">{responseMessage}</small>
             </li>
           </ul>
         )}
