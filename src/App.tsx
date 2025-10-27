@@ -33,11 +33,25 @@ const App = () => {
         </span>
 
         <span className="block text-center">
-          <strong className="block mt-[3em] mb-[2em]">Newsletter form with validation</strong>
+          <strong className="block mt-[3em] mb-[2em]">
+            Newsletter form with validation and mockup API call
+          </strong>
         </span>
         {/* Newsletter Form */}
         <NewsletterForm />
+
+        <span className="block text-center">
+          <strong className="block mt-[4em] mb-[2em]">
+            Search with Auto complete and optimized API calls logic
+          </strong>
+        </span>
         <AutoCompleateSearch />
+
+        <span className="block text-center">
+          <strong className="block mt-[4em] mb-[2em]">
+            ThemeSwitcher with Local storage state
+          </strong>
+        </span>
         <ThemeSwitcher theme={theme} setTheme={setTheme} />
         <JokeGenerator />
 

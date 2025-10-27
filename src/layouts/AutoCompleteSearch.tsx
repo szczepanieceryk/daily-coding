@@ -6,7 +6,7 @@ const AutoCompleateSearch: React.FC = () => {
     useAutoCompleate();
 
   return (
-    <div className="mt-[4em] p-4 rounded-lg border-2 border-gray-300">
+    <div className="p-4 rounded-lg border-2 border-gray-300">
       <div className="text-center">
         <span className="block mb-3">
           <strong>Auto compleate searach</strong>
