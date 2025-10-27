@@ -9,12 +9,6 @@ _React • TypeScript • Tailwind CSS • Vite • Playwright_
 
 ## Categories
 
-### **React Components** :
-
-Reusable React components :
-
-- Button Component
-
 ### **Layouts**
 
 A code snippets with it's own functionality
