@@ -49,12 +49,21 @@ const App = () => {
 
         <span className="block text-center">
           <strong className="block mt-[4em] mb-[2em]">
-            ThemeSwitcher with Local storage state
+            Theme Switcher with Local storage state
           </strong>
         </span>
         <ThemeSwitcher theme={theme} setTheme={setTheme} />
+
+        <span className="block text-center">
+          <strong className="block mt-[4em] mb-[2em]">Dad Joke Generator</strong>
+        </span>
         <JokeGenerator />
 
+        <span className="block text-center">
+          <strong className="block mt-[4em] mb-[2em]">
+            Quiz Game with option of question category & difficulty change
+          </strong>
+        </span>
         <DifficultyContext.Provider value={{ difficulty, setDifficulty }}>
           <TriviaQuizz />
         </DifficultyContext.Provider>
