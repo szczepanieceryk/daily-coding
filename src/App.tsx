@@ -32,14 +32,15 @@ const App = () => {
           Here I add small parts of code, everyday, from 10 to 15min{' '}
         </span>
 
+        {/* Newsletter Form */}
         <span className="block text-center">
           <strong className="block mt-[3em] mb-[2em]">
             Newsletter form with validation and mockup API call
           </strong>
         </span>
-        {/* Newsletter Form */}
         <NewsletterForm />
 
+        {/* Search with Auto complet */}
         <span className="block text-center">
           <strong className="block mt-[4em] mb-[2em]">
             Search with Auto complete and optimized API calls logic
@@ -47,6 +48,7 @@ const App = () => {
         </span>
         <AutoCompleateSearch />
 
+        {/* Theme Switcher */}
         <span className="block text-center">
           <strong className="block mt-[4em] mb-[2em]">
             Theme Switcher with Local storage state
@@ -54,11 +56,13 @@ const App = () => {
         </span>
         <ThemeSwitcher theme={theme} setTheme={setTheme} />
 
+        {/* Joke Generator */}
         <span className="block text-center">
           <strong className="block mt-[4em] mb-[2em]">Dad Joke Generator</strong>
         </span>
         <JokeGenerator />
 
+        {/* Quizz Game */}
         <span className="block text-center">
           <strong className="block mt-[4em] mb-[2em]">
             Quiz Game with option of question category & difficulty change
