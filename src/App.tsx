@@ -6,7 +6,7 @@ import ThemeSwitch from './components/ThemeSwitch';
 import ThemeSwitcher from './layouts/ThemeSwitcher';
 import JokeGenerator from './layouts/JokeGenerator';
 import TriviaQuizz from './layouts/TriviaQuizz/TriviaQuizz';
-
+import ToDoList from './layouts/ToDoList';
 type DifficultyContextType = {
   difficulty: string;
   setDifficulty: (difficulty: string) => void;
@@ -71,6 +71,12 @@ const App = () => {
         <DifficultyContext.Provider value={{ difficulty, setDifficulty }}>
           <TriviaQuizz />
         </DifficultyContext.Provider>
+
+        {/* Quizz Game */}
+        <span className="block text-center">
+          <strong className="block mt-[4em] mb-[2em]">Manage your tasks with a to do list</strong>
+        </span>
+        <ToDoList />
       </div>
     </div>
   );
