@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
 import Button from '../components/Button';
+
+interface TaskProps {
+  task: string;
+}
+
+const TaskDisplay: React.FC<TaskProps> = ({ task }) => {
+  return (
+    <div className="p-2 mx-auto flex items-center bg-gray-700 rounded-lg max-w-[300px] text-left">
+      <input type="checkbox" name="" id="" className="mr-2" />
+      <span className="inline">{task}</span>
+    </div>
+  );
+};
+
 const ToDoList = () => {
   const [task, setTask] = useState<string>('');
   const [displayedTask, setDisplayedTask] = useState<string>('');
@@ -44,7 +58,12 @@ const ToDoList = () => {
           />
         </div>
       </form>
-      {isTaskSubmitted && <span className="block">Tasks list: {displayedTask}</span>}
+      {isTaskSubmitted && (
+        <div className="items-center">
+          <span className="mb-2 block">Tasks list:</span>
+          <TaskDisplay task={displayedTask} />
+        </div>
+      )}
     </div>
   );
 };
