@@ -6,10 +6,22 @@ interface TaskProps {
 }
 
 const TaskDisplay: React.FC<TaskProps> = ({ task }) => {
+  const deleteTask = () => {
+    console.log(`delete Task ${task}`);
+  };
+
   return (
-    <div className="p-3 my-3 mx-auto flex items-center bg-gray-700 rounded-lg max-w-[300px] text-left">
-      <input type="checkbox" name="" id="" className="mr-2" />
-      <span className="inline">{task}</span>
+    <div className="p-3 my-3 mx-auto flex justify-between bg-gray-700 rounded-lg max-w-[300px]">
+      <div className="text-left">
+        <input type="checkbox" name="" id="" className="mr-2" />
+        <span className="inline">{task}</span>
+      </div>
+      <div
+        onClick={deleteTask}
+        className="w-8 h-8 rounded-2xl border-2 border-red-400 text-red-400 cursor-pointer"
+      >
+        x
+      </div>
     </div>
   );
 };
