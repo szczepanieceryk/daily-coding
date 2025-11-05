@@ -50,6 +50,15 @@ const ToDoList = () => {
     console.log(`${task} added to list`);
   };
 
+  const clearSelectedTasks = () => {
+    const newDisplayedTasks = displayedTask.filter((_, index) => {
+      return !selectedTask.includes(`#${index}`);
+    });
+    setDisplayedTask(newDisplayedTasks);
+    setSelectedTask([]);
+    console.log('Usunięto zaznaczone zadanmia');
+  };
+
   const handleSelectTask = (taskId: string, isChecked: boolean) => {
     if (isChecked) {
       setSelectedTask([...selectedTask, taskId]);
@@ -103,6 +112,7 @@ const ToDoList = () => {
           type="button"
           className="bg-red-600 hover:bg-red-600"
           content={`Clear task${selectedTask.length > 1 ? 's' : ''} (${selectedTask.length})`}
+          onClick={clearSelectedTasks}
         />
       )}
 
