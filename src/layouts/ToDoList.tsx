@@ -7,7 +7,7 @@ interface TaskProps {
 
 const TaskDisplay: React.FC<TaskProps> = ({ task }) => {
   return (
-    <div className="p-2 mx-auto flex items-center bg-gray-700 rounded-lg max-w-[300px] text-left">
+    <div className="p-3 my-3 mx-auto flex items-center bg-gray-700 rounded-lg max-w-[300px] text-left">
       <input type="checkbox" name="" id="" className="mr-2" />
       <span className="inline">{task}</span>
     </div>
