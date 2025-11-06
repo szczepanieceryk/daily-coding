@@ -6,7 +6,7 @@ import ThemeSwitch from './components/ThemeSwitch';
 import ThemeSwitcher from './layouts/ThemeSwitcher';
 import JokeGenerator from './layouts/JokeGenerator';
 import TriviaQuizz from './layouts/TriviaQuizz/TriviaQuizz';
-import ToDoList from './layouts/ToDoList';
+import ToDoList from './layouts/ToDoList/ToDoList';
 type DifficultyContextType = {
   difficulty: string;
   setDifficulty: (difficulty: string) => void;
