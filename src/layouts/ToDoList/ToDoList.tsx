@@ -1,56 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '../../components/Button';
 import TaskDisplay from './TaskDisplay';
-
+import useToDoList from '../../hooks/useToDoList';
 const ToDoList = () => {
-  const [task, setTask] = useState<string>('');
-  const [displayedTask, setDisplayedTask] = useState<string[]>([]);
-  const [selectedTask, setSelectedTask] = useState<string[]>([]);
-
-  const addTask = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const task = e.target.value;
-    setTask(task);
-    console.log(`${task} added to list`);
-  };
-
-  const handleDeleteSingleTask = (taskId: string) => {
-    const indexToDelete = parseInt(taskId.replace('#', ''));
-
-    const newDisplayedTasks = displayedTask.filter((_, index) => index !== indexToDelete);
-    setDisplayedTask(newDisplayedTasks);
-
-    setSelectedTask(selectedTask.filter((id) => id !== taskId));
-  };
-
-  const clearSelectedTasks = () => {
-    const newDisplayedTasks = displayedTask.filter((_, index) => {
-      return !selectedTask.includes(`#${index}`);
-    });
-    setDisplayedTask(newDisplayedTasks);
-    setSelectedTask([]);
-    console.log('Usunięto zaznaczone zadania');
-  };
-
-  const handleSelectTask = (taskId: string, isChecked: boolean) => {
-    if (isChecked) {
-      setSelectedTask([...selectedTask, taskId]);
-      console.log(`Zaznaczono : ${taskId}`);
-    } else {
-      setSelectedTask(selectedTask.filter((id) => id !== taskId));
-      console.log(`Odznaczono: ${taskId} `);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (task.trim()) {
-      setDisplayedTask([...displayedTask, task]);
-      console.log('displayedTask ', displayedTask);
-      setTask('');
-      console.log('submit form ');
-    }
-  };
+  const {
+    task,
+    selectedTask,
+    displayedTask,
+    handleSubmit,
+    handleDeleteSingleTask,
+    handleSelectTask,
+    addTask,
+    clearSelectedTasks,
+  } = useToDoList();
 
   return (
     <div className="p-2 md:p-4 border-2 rounded-lg border-gray-200 text-center">
