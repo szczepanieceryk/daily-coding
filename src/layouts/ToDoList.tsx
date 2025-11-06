@@ -4,16 +4,17 @@ import Button from '../components/Button';
 interface TaskProps {
   id: string;
   task: string;
+  onDelete: (id: string) => void;
   selectTask: (id: string, isChecked: boolean) => void;
 }
 
-const TaskDisplay: React.FC<TaskProps> = ({ id, task, selectTask }) => {
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+const TaskDisplay: React.FC<TaskProps> = ({ id, task, onDelete, selectTask }) => {
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     selectTask(id, e.target.checked);
   };
 
-  const deleteTask = () => {
-    console.log(`delete Task ${task}`);
+  const handleDeleteTask = (): void => {
+    onDelete(id);
   };
 
   return (
@@ -30,7 +31,7 @@ const TaskDisplay: React.FC<TaskProps> = ({ id, task, selectTask }) => {
         <span className="inline">{task}</span>
       </div>
       <div
-        onClick={deleteTask}
+        onClick={handleDeleteTask}
         className="w-8 h-8 rounded-2xl border-2 border-red-400 text-red-400 cursor-pointer"
       >
         x
@@ -50,13 +51,22 @@ const ToDoList = () => {
     console.log(`${task} added to list`);
   };
 
+  const handleDeleteSingleTask = (taskId: string) => {
+    const indexToDelete = parseInt(taskId.replace('#', ''));
+
+    const newDisplayedTasks = displayedTask.filter((_, index) => index !== indexToDelete);
+    setDisplayedTask(newDisplayedTasks);
+
+    setSelectedTask(selectedTask.filter((id) => id !== taskId));
+  };
+
   const clearSelectedTasks = () => {
     const newDisplayedTasks = displayedTask.filter((_, index) => {
       return !selectedTask.includes(`#${index}`);
     });
     setDisplayedTask(newDisplayedTasks);
     setSelectedTask([]);
-    console.log('Usunięto zaznaczone zadanmia');
+    console.log('Usunięto zaznaczone zadania');
   };
 
   const handleSelectTask = (taskId: string, isChecked: boolean) => {
@@ -124,6 +134,7 @@ const ToDoList = () => {
               key={`${task}-${index}`}
               id={`#${index}`}
               task={task}
+              onDelete={handleDeleteSingleTask}
               selectTask={handleSelectTask}
             />
           ))}
