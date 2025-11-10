@@ -4,13 +4,12 @@ const useToDoList = () => {
   const [displayedTask, setDisplayedTask] = useState<string[]>([]);
   const [selectedTask, setSelectedTask] = useState<string[]>([]);
 
-  const addTask = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const addTask = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const task = e.target.value;
     setTask(task);
-    console.log(`${task} added to list`);
   };
 
-  const handleDeleteSingleTask = (taskId: string) => {
+  const handleDeleteSingleTask = (taskId: string): void => {
     const indexToDelete = parseInt(taskId.replace('#', ''));
 
     const newDisplayedTasks = displayedTask.filter((_, index) => index !== indexToDelete);
@@ -19,26 +18,23 @@ const useToDoList = () => {
     setSelectedTask(selectedTask.filter((id) => id !== taskId));
   };
 
-  const clearSelectedTasks = () => {
+  const clearSelectedTasks = (): void => {
     const newDisplayedTasks = displayedTask.filter((_, index) => {
       return !selectedTask.includes(`#${index}`);
     });
     setDisplayedTask(newDisplayedTasks);
     setSelectedTask([]);
-    console.log('Deleted selected tasks');
   };
 
-  const handleSelectTask = (taskId: string, isChecked: boolean) => {
+  const handleSelectTask = (taskId: string, isChecked: boolean): void => {
     if (isChecked) {
       setSelectedTask([...selectedTask, taskId]);
-      console.log(`Selected : ${taskId}`);
     } else {
       setSelectedTask(selectedTask.filter((id) => id !== taskId));
-      console.log(`Unselected: ${taskId} `);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
     if (task.trim()) {
