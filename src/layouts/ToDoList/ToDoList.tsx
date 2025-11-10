@@ -43,12 +43,12 @@ const ToDoList = () => {
       <div className="mt-[3rem] items-center min-h-[350px]">
         {displayedTask.length > 0 && (
           <div className="flex flex-wrap mx-auto justify-between items-center max-w-[300px] min-h-[60px]">
-            <span className="mb-2 block text-left">Tasks list:</span>
+            <span className="block text-left">Tasks list:</span>
             {selectedTask.length > 0 && (
               <Button
                 style="primary"
                 type="button"
-                className="my-0 bg-red-600 hover:bg-red-600 w-[155px]"
+                className="-my-3 bg-red-600 hover:bg-red-600 w-[155px]"
                 content={`Clear task${selectedTask.length > 1 ? 's' : ''} (${selectedTask.length})`}
                 onClick={clearSelectedTasks}
               />
