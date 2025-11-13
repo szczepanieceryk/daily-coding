@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   className = '',
   disabled = false,
 }) => {
-  const baseClasses = 'px-6 py-3 my-3 rounded-md';
+  const baseClasses = 'px-6 py-3 rounded-md';
   const styleClasses = {
     primary: disabled
       ? 'bg-gray-400 text-white cursor-not-allowed'

@@ -48,7 +48,7 @@ const ToDoList = () => {
               <Button
                 style="primary"
                 type="button"
-                className="-my-3 bg-red-600 hover:bg-red-600 w-[155px]"
+                className="bg-red-600 hover:bg-red-600 w-[155px]"
                 content={`Clear task${selectedTask.length > 1 ? 's' : ''} (${selectedTask.length})`}
                 onClick={clearSelectedTasks}
               />
