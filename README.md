@@ -28,6 +28,12 @@ A code snippets with it's own functionality
 
 - **To Do List App**
 
+  List Features:
+
+  - Adding Task
+  - Deleting single task
+  - Deleting multiple tasks
+
 ### **Snippets**
 
 - custom hook for using LocalStorage
