@@ -7,21 +7,13 @@ interface TaskProps {
 }
 
 const TaskDisplay: React.FC<TaskProps> = ({ id, task, onDelete, selectTask }) => {
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    selectTask(id, e.target.checked);
-  };
-
-  const handleDeleteTask = (): void => {
-    onDelete(id);
-  };
-
   return (
     <div className="p-3 my-3 mx-auto flex justify-between items-center bg-gray-700 rounded-lg max-w-[300px]">
       <div className="text-left">
         <label className="inline-flex items-center cursor-pointer group" htmlFor={id}>
           <div className="relative">
             <input
-              onChange={handleCheckboxChange}
+              onChange={(e) => selectTask(id, e.target.checked)}
               type="checkbox"
               id={id}
               className="sr-only peer"
@@ -48,7 +40,7 @@ const TaskDisplay: React.FC<TaskProps> = ({ id, task, onDelete, selectTask }) =>
         </label>
       </div>
       <div
-        onClick={handleDeleteTask}
+        onClick={() => onDelete(id)}
         className="w-8 h-8 rounded-2xl border-2 border-red-400 text-red-400 cursor-pointer"
       >
         x
