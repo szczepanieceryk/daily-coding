@@ -1,7 +1,3 @@
-export interface Config {
-  appVersion: string;
-}
-
 export type Theme = 'light' | 'dark';
 
 export interface ThemeProps {
@@ -9,4 +5,7 @@ export interface ThemeProps {
   setTheme: (value: Theme) => void;
 }
 
-export type CharacterRouteParams = { params: { id: string } };
+export type DifficultyContextType = {
+  difficulty: string;
+  setDifficulty: (difficulty: string) => void;
+};
