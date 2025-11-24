@@ -2,7 +2,8 @@ import React from 'react';
 import Button from '../../components/Button';
 import TaskDisplay from './TaskDisplay';
 import useToDoList from '../../hooks/useToDoList';
-const ToDoList = () => {
+
+const ToDoList: React.FC = () => {
   const {
     task,
     selectedTask,
@@ -63,7 +64,7 @@ const ToDoList = () => {
             onDelete={handleDeleteSingleTask}
             selectTask={handleSelectTask}
           />
-        ))}
+        )) || []}
       </div>
     </div>
   );
